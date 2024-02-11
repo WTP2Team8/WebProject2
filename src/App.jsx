@@ -4,12 +4,14 @@ import Home from "./views/Home";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import NotFound from "./views/NotFound";
+import Login from "./views/Login";
 import Authenticated from "./hoc/Authenticated";
 import { AppContext } from "./context/AppContext";
-import Register from "./views/Register";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "./config/firebase-config.js";
+import { auth } from "./config/firebase-config";
 import { getUserData } from "./services/users.service";
+import Register from "./views/Register";
 
 function App() {
   const [context, setContext] = useState({
@@ -40,32 +42,10 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
+
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />}></Route>
-            <Route
-              path="/tweets"
-              element={
-                <Authenticated>
-                  <AllTweets />
-                </Authenticated>
-              }
-            />
-            <Route
-              path="/tweets/:id"
-              element={
-                <Authenticated>
-                  <SingleTweet />
-                </Authenticated>
-              }
-            />
-            <Route
-              path="/tweets-create"
-              element={
-                <Authenticated>
-                  <CreateTweet />
-                </Authenticated>
-              }
-            />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
