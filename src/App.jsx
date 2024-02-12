@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Home from "./views/Home";
 import Contacts from "./views/Contacts";
+import Trending from "./views/Trending";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Navbar from "./components/NavBar";
@@ -46,7 +47,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contacts" element={<Contacts />} />
-
+            <Route path="/trending" element={<Trending />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />}></Route>
 

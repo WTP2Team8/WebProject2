@@ -3,18 +3,23 @@
 .navbar {
     background-color: #333; /* Set the background color */
     padding: 10px; /* Adjust the padding as needed */
+    width: 100%; 
 }
 
 .nav-list {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex; /* Display the list items in a row */
+    display: flex; 
 }
 
 .nav-item {
-    position: relative;
-    margin-right: 15px; /* Adjust the margin between items */
+    position: sticky;
+    flex: 1; 
+    margin-right: 5px; /* Adjust the margin between items */
+    display: flex;
+    justify-content: center; 
+    align-items: center;
 }
 
 .nav-item:last-child {
@@ -22,14 +27,15 @@
 }
 
 .nav-item a,
-.nav-item span { /* Apply the color to both links and spans */
+.nav-item span { 
     text-decoration: none;
-    color: white; /* Set the text color */
+    color: white; 
     font-weight: bold;
+    font-size: 20px;
 }
 
 .nav-item a:hover,
-.nav-item span:hover { /* Apply the color to both links and spans on hover */
+.nav-item span:hover { 
     color: #ffcc00; /* Set the text color on hover */
 }
 
@@ -47,13 +53,15 @@
     display: block;
 }
 
-.category-link {
+.category-link,
+.profile-link {
     display: block;
     color: white;
     text-decoration: none;
     margin-bottom: 5px;
 }
 
-.category-link:hover {
+.category-link:hover,
+.profile-link:hover {
     color: #ffcc00;
 }
