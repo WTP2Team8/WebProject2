@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Home from "./views/Home";
+import Contacts from "./views/Contacts";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Navbar from "./components/NavBar";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import NotFound from "./views/NotFound";
 import Login from "./views/Login";
@@ -39,9 +41,11 @@ function App() {
     <>
       <BrowserRouter>
         <AppContext.Provider value={{ ...context, setContext }}>
+        <Navbar />
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/contacts" element={<Contacts />} />
 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />}></Route>
