@@ -14,7 +14,6 @@ export default function Header() {
 
   return (
     <header>
-      <NavLink to="/">Начало</NavLink>
       {user && <NavLink to="/posts">Всички постове</NavLink>}
       {user && <NavLink to="/posts-create">Създай пост</NavLink>}
       {user ? (

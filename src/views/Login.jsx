@@ -49,7 +49,7 @@ export default function Login() {
       <input
         value={form.password}
         onChange={updateForm("password")}
-        type="text"
+        type="password"
         id="password"
         name="password"
       />
