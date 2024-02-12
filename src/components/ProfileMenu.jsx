@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import LogoutButton from './LogoutButton';
 
 export default function ProfileMenu() {
     const [isProfileMenuOpen, setProfileMenuOpen] = useState(false);
@@ -32,9 +33,7 @@ export default function ProfileMenu() {
               <Link to="/profile" className="profile-link">
                 Профил
               </Link>
-              <Link to="/profile5" className="profile-link">
-                Изход
-              </Link>
+              <LogoutButton />
             </div>
           </div>
         )}
