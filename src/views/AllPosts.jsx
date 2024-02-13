@@ -36,7 +36,7 @@ export default function AllPosts() {
         <label htmlFor="search">Търсене </label>
         <input value={search} onChange={e => setSearch(e.target.value)} type="text" name="search" id="search" /><br/>
         {posts.map((post) => (
-          <Post key={post.id} tweet={post} toggleTweetLike={togglePostLike}/>
+          <Post key={post.id} post={post} togglePostLike={togglePostLike}/>
         ))}
     </div>
   );

@@ -27,7 +27,13 @@ export default function CreatePost() {
       return alert('Content must be at least 15 characters long');
     }
     
-    await addPost(userData.handle, post.title, post.content);
+   try {
+      await addPost(userData.handle, post.title, post.content);
+     
+    } catch (error) {
+      console.error("Възникна грешка при създаването на пост", error);
+      
+    }
 
     setPost({
       title: '',

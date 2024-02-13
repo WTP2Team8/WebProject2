@@ -8,7 +8,7 @@ import { AppContext } from '../../context/AppContext';
 
 /**
  * 
- * @param {{ post: { id: string, title: string, content: string, createdOn: string, liked: boolean }, togglePostLike: function }} props 
+ * @param {{ post: { id: string, title: string, content: string, createdOn: object, likedBy: boolean }, togglePostLike: function }} props
  */
 export default function Post({ post, togglePostLike }) {
   const navigate = useNavigate();

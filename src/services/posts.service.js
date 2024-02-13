@@ -22,7 +22,7 @@ export const getAllPosts = async (search) => {
     createdOn: new Date(snapshot.val()[key].createdOn).toString(),
     likedBy: snapshot.val()[key].likedBy ? Object.keys(snapshot.val()[key].likedBy) : [],
   }))
-    .filter(t => t.title.toLowerCase().includes(search.toLowerCase()));
+    .filter(p => p.title.toLowerCase().includes(search.toLowerCase()));
   console.log(posts);
 
   return posts;
