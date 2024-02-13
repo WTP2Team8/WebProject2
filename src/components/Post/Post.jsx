@@ -34,7 +34,7 @@ export default function Post({ post, togglePostLike }) {
 }
 
 Post.propTypes = {
-  tweet: PropTypes.shape({
+  post: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
     content: PropTypes.string,
