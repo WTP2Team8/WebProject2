@@ -15,9 +15,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./config/firebase-config";
 import { getUserData } from "./services/users.service";
 import Register from "./views/Register";
-/* import CreatePost from "./views/Posts";
-import AllPosts from "./views/AllPosts";
-import Posts from "./views/Posts"; */
 import AllPosts from "./views/AllPosts";
 import SinglePost from "./views/SinglePost";
 import CreatePost from "./views/CreatePost";
@@ -25,7 +22,7 @@ import CreatePost from "./views/CreatePost";
 function App() {
   const [context, setContext] = useState({
     user: null,
-    userDate: null,
+    userData: null,
   });
 
   const [user, loading, error] = useAuthState(auth);
@@ -37,7 +34,7 @@ function App() {
           console.log(snapshot.val());
           setContext({
             user,
-            userData: snapshot.val()[Object.keys(snapshot.val())[0]],
+            userData: snapshot.val()[Object.keys(snapshot.val())[0]]
           });
         }
       });

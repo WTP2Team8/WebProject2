@@ -21,7 +21,7 @@ export default function SinglePost() {
   return (
     <div>
       <h1>Публикация</h1>
-      {post && <Post tweet={post} togglePostLike={togglePostLike} />}
+      {post && <Post post={post} togglePostLike={togglePostLike} />}
     </div>
   )
 }

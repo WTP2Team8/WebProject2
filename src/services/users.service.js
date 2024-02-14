@@ -11,7 +11,7 @@ export const createUserHandle = (handle, uid, email) => {
     uid,
     email,
     createdOn: new Date(),
-    likedTweets: {},
+    likedPosts: {},
   });
 };
 

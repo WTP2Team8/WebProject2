@@ -1,11 +1,12 @@
 import { ref, push, get, query, equalTo, orderByChild, update } from 'firebase/database';
 import { db } from '../config/firebase-config';
 
-export const addPost = async (author, title, content) => {
+export const addPost = async (author, title, content,uid) => {
   return push(ref(db, 'posts'), {
     author,
     title,
     content,
+    uid,
     createdOn: Date.now(),
   });
 };
@@ -22,8 +23,10 @@ export const getAllPosts = async (search) => {
     createdOn: new Date(snapshot.val()[key].createdOn).toString(),
     likedBy: snapshot.val()[key].likedBy ? Object.keys(snapshot.val()[key].likedBy) : [],
   }))
-    .filter(p => p.title.toLowerCase().includes(search.toLowerCase()));
-  console.log(posts);
+  .filter(p => p.title && p.content)
+  .filter(p => p.title.toLowerCase().includes(search.toLowerCase()));
+  
+ 
 
   return posts;
 };

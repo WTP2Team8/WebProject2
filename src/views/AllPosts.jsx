@@ -31,9 +31,9 @@ export default function AllPosts() {
   };
 
   return (
-    <div>
+    <div >
       <h1>Всички публикации</h1>
-        <label htmlFor="search">Търсене </label>
+        <label className="search-bar" htmlFor="search">Търсене </label>
         <input value={search} onChange={e => setSearch(e.target.value)} type="text" name="search" id="search" /><br/>
         {posts.map((post) => (
           <Post key={post.id} post={post} togglePostLike={togglePostLike}/>
