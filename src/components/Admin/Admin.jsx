@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import Button from "../Button";
 import {
   getAllUsers,
+  updateAdminStatus,
   updateBlockedUser,
   updateUnblockedUser,
 } from "../../services/users.service";
-import { getAllPosts } from "../../services/posts.service";
+import { deletePost, getAllPosts } from "../../services/posts.service";
 import UserView from "../UserView/UserView";
 
 const Admin = () => {
@@ -14,8 +15,6 @@ const Admin = () => {
   const [blockedUsers, setBlockedUsers] = useState(null);
   const [posts, setPosts] = useState(null);
   const [blocked, setBlocked] = useState(false);
-
-  //   console.log(users);
 
   useEffect(() => {
     getAllUsers().then((result) => {
@@ -31,6 +30,14 @@ const Admin = () => {
 
   const handleUnblock = (userHandle) => {
     updateUnblockedUser(userHandle).then(() => setBlocked(!blocked));
+  };
+
+  const handleDeletePost = (postId) => {
+    deletePost(postId).then(() => setBlocked(!blocked));
+  };
+
+  const changeAdminStatus = (userHandle) => {
+    updateAdminStatus(userHandle).then(() => setBlocked(!blocked));
   };
 
   return (
@@ -60,6 +67,7 @@ const Admin = () => {
                     text={"Block"}
                     user={user}
                     handleBlock={handleBlock}
+                    changeAdminStatus={changeAdminStatus}
                   />
                 ))}
               </tbody>
@@ -91,7 +99,35 @@ const Admin = () => {
             </table>
           </div>
         )}
-        {page === 3 && <div>posts</div>}
+        {page === 3 && (
+          <div className="admin-page">
+            <h1>Posts:</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Created On</th>
+                  <th>Delete Post</th>
+                </tr>
+              </thead>
+              <tbody>
+                {posts?.map((post) => (
+                  <tr key={post.id}>
+                    <td>{post.title}</td>
+                    <td>{post.author}</td>
+                    <td>No</td>
+                    <td>
+                      <Button onClick={() => handleDeletePost(post.id)}>
+                        Delete
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
       <div className="admin-footer"></div>
     </div>

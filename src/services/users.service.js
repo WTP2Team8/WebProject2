@@ -61,3 +61,12 @@ export const updateUnblockedUser = (handle) => {
 
   return update(ref(db), updateUser);
 };
+
+export const updateAdminStatus = async (handle) => {
+  console.log(handle);
+  const isAdmin = await get(ref(db, `/users/${handle}/isAdmin`));
+  const updateUser = {};
+  updateUser[`/users/${handle}/isAdmin`] = !isAdmin.val();
+  console.log(isAdmin.val());
+  return update(ref(db), updateUser);
+};

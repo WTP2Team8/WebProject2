@@ -63,12 +63,20 @@ export const dislikePost = (handle, postId) => {
   return update(ref(db), updateLikes);
 }; */
 
-
-import { ref, push, get, query, equalTo, orderByChild, update } from 'firebase/database';
-import { db } from '../config/firebase-config';
+import {
+  ref,
+  push,
+  get,
+  query,
+  equalTo,
+  orderByChild,
+  update,
+  remove,
+} from "firebase/database";
+import { db } from "../config/firebase-config";
 
 export const addPost = async (author, title, content) => {
-  return push(ref(db, 'posts'), {
+  return push(ref(db, "posts"), {
     author,
     title,
     content,
@@ -77,18 +85,22 @@ export const addPost = async (author, title, content) => {
 };
 
 export const getAllPosts = async () => {
-  const snapshot = await get(query(ref(db, 'posts'), orderByChild('createdOn')));
+  const snapshot = await get(
+    query(ref(db, "posts"), orderByChild("createdOn"))
+  );
   // console.log(snapshot);
   if (!snapshot.exists()) {
     return [];
   }
 
-  const posts = Object.keys(snapshot.val()).map(key => ({
+  const posts = Object.keys(snapshot.val()).map((key) => ({
     id: key,
     ...snapshot.val()[key],
     createdOn: new Date(snapshot.val()[key].createdOn).toString(),
-    likedBy: snapshot.val()[key].likedBy ? Object.keys(snapshot.val()[key].likedBy) : [],
-  }))
+    likedBy: snapshot.val()[key].likedBy
+      ? Object.keys(snapshot.val()[key].likedBy)
+      : [],
+  }));
   //   .filter(p => p.title.toLowerCase().includes(search.toLowerCase()));
   // console.log(posts);
 
@@ -96,25 +108,29 @@ export const getAllPosts = async () => {
 };
 
 export const getPostsBySearchTerm = async (search) => {
-  const snapshot = await get(query(ref(db, 'posts'), orderByChild('createdOn')));
+  const snapshot = await get(
+    query(ref(db, "posts"), orderByChild("createdOn"))
+  );
   if (!snapshot.exists()) {
     return [];
   }
 
-  const posts = Object.keys(snapshot.val()).map(key => ({
-    id: key,
-    ...snapshot.val()[key],
-    createdOn: new Date(snapshot.val()[key].createdOn).toString(),
-    likedBy: snapshot.val()[key].likedBy ? Object.keys(snapshot.val()[key].likedBy) : [],
-  }))
-    .filter(p => p.title.toLowerCase().includes(search.toLowerCase()));
+  const posts = Object.keys(snapshot.val())
+    .map((key) => ({
+      id: key,
+      ...snapshot.val()[key],
+      createdOn: new Date(snapshot.val()[key].createdOn).toString(),
+      likedBy: snapshot.val()[key].likedBy
+        ? Object.keys(snapshot.val()[key].likedBy)
+        : [],
+    }))
+    .filter((p) => p.title.toLowerCase().includes(search.toLowerCase()));
   console.log(posts);
 
   return posts;
 };
 
 export const getPostById = async (id) => {
-
   const snapshot = await get(ref(db, `posts/${id}`));
   if (!snapshot.exists()) {
     return null;
@@ -136,6 +152,10 @@ export const likePost = (handle, postId) => {
   updateLikes[`/users/${handle}/likedPosts/${postId}`] = true;
 
   return update(ref(db), updateLikes);
+};
+
+export const deletePost = (postId) => {
+  return remove(ref(db, `/posts/${postId}`));
 };
 
 /* export const dislikePost = (handle, postId) => {

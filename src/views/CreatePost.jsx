@@ -6,8 +6,8 @@ import { AppContext } from "../context/AppContext";
 export default function CreatePost() {
   const { userData } = useContext(AppContext);
   const [post, setPost] = useState({
-    title: '',
-    content: '',
+    title: "",
+    content: "",
   });
 
   const updatePost = (value, key) => {
@@ -18,31 +18,52 @@ export default function CreatePost() {
   };
 
   const createPost = async () => {
-    if (post.title.length > 7 && post.title.length < 25) {
-      return alert('Title must be bigger than 7 characters and less than 25 characters long');
+    if (userData.isBlocked) {
+      return alert("Blocked users cannot create posts!");
     }
-    if (post.content.length > 15 && post.content.length < 100) {
-      return alert('Content must be bigger than 15 characters and less than 100 characters long');
+    if (post.title.length < 7 && post.title.length > 25) {
+      return alert(
+        "Title must be bigger than 7 characters and less than 25 characters long"
+      );
     }
- 
-      await addPost(userData.handle, post.title, post.content);
-     
-   
+    if (post.content.length < 15 && post.content.length > 100) {
+      return alert(
+        "Content must be bigger than 15 characters and less than 100 characters long"
+      );
+    }
+
+    await addPost(userData.handle, post.title, post.content);
 
     setPost({
-      title: '',
-      content: '',
+      title: "",
+      content: "",
     });
   };
 
-   console.log(userData);
   return (
     <div>
       <h1>Създай публикация</h1>
       <label htmlFor="input-title">Заглавие:</label>
-      <input value={post.title} onChange={e => updatePost(e.target.value, 'title')} type="text" name="input-title" id="input-title" /><br/>
-      <label htmlFor="input-content">Съдържание:</label><br/>
-      <textarea value={post.content} onChange={e => updatePost(e.target.value, 'content')} name="input-content" id="input-content" cols="30" rows="10"></textarea><br/><br/>
+      <input
+        value={post.title}
+        onChange={(e) => updatePost(e.target.value, "title")}
+        type="text"
+        name="input-title"
+        id="input-title"
+      />
+      <br />
+      <label htmlFor="input-content">Съдържание:</label>
+      <br />
+      <textarea
+        value={post.content}
+        onChange={(e) => updatePost(e.target.value, "content")}
+        name="input-content"
+        id="input-content"
+        cols="30"
+        rows="10"
+      ></textarea>
+      <br />
+      <br />
       <Button onClick={createPost}>Създай</Button>
     </div>
   );
