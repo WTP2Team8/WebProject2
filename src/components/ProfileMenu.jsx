@@ -43,6 +43,9 @@ export default function ProfileMenu() {
                   <Link to="/profile" className="profile-link">
                     Профил
                   </Link>
+                  <Link to="/admin" className="profile-link">
+                    Админ
+                  </Link>
                   <Button onClick={logout}> Изход </Button>
                 </div>
               </div>

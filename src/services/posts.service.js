@@ -76,7 +76,26 @@ export const addPost = async (author, title, content) => {
   });
 };
 
-export const getAllPosts = async (search) => {
+export const getAllPosts = async () => {
+  const snapshot = await get(query(ref(db, 'posts'), orderByChild('createdOn')));
+  // console.log(snapshot);
+  if (!snapshot.exists()) {
+    return [];
+  }
+
+  const posts = Object.keys(snapshot.val()).map(key => ({
+    id: key,
+    ...snapshot.val()[key],
+    createdOn: new Date(snapshot.val()[key].createdOn).toString(),
+    likedBy: snapshot.val()[key].likedBy ? Object.keys(snapshot.val()[key].likedBy) : [],
+  }))
+  //   .filter(p => p.title.toLowerCase().includes(search.toLowerCase()));
+  // console.log(posts);
+
+  return posts;
+};
+
+export const getPostsBySearchTerm = async (search) => {
   const snapshot = await get(query(ref(db, 'posts'), orderByChild('createdOn')));
   if (!snapshot.exists()) {
     return [];

@@ -18,6 +18,7 @@ import Register from "./views/Register";
 import AllPosts from "./views/AllPosts";
 import SinglePost from "./views/SinglePost";
 import CreatePost from "./views/CreatePost";
+import Admin from "./components/Admin/Admin";
 
 
 function App() {
@@ -33,10 +34,10 @@ function App() {
   useEffect(() => {
     if (user) {
       getUserData(user.uid).then((snapshot) => {
-        console.log(user.uid);
+        // console.log(user.uid);
         
         if (snapshot.exists()) {
-          console.log(snapshot.val());
+          // console.log(snapshot.val());
           
           setContext({user,
             userData: snapshot.val()[Object.keys(snapshot.val())[0]]
@@ -63,7 +64,7 @@ function App() {
             <Route path="/posts-create" element={<Authenticated><CreatePost /></Authenticated>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />}></Route>
-
+            <Route path="/admin" element={<Admin />}></Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
