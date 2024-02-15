@@ -1,6 +1,3 @@
-
-
-
 import { useEffect, useState } from "react";
 import { getAllPosts } from "../services/posts.service";
 import Post from "../components/Post/Post";

@@ -19,7 +19,10 @@ import AllPosts from "./views/AllPosts";
 import SinglePost from "./views/SinglePost";
 import CreatePost from "./views/CreatePost";
 
+
 function App() {
+  
+
   const [context, setContext] = useState({
     user: null,
     userData: null,
@@ -30,12 +33,16 @@ function App() {
   useEffect(() => {
     if (user) {
       getUserData(user.uid).then((snapshot) => {
+        console.log(user.uid);
+        
         if (snapshot.exists()) {
           console.log(snapshot.val());
-          setContext({
-            user,
+          
+          setContext({user,
             userData: snapshot.val()[Object.keys(snapshot.val())[0]]
           });
+        } else {
+          console.log("No such document!");
         }
       });
     }

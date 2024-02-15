@@ -1,5 +1,3 @@
-
-
 import { useContext, useState } from "react";
 import Button from "../components/Button";
 import { addPost } from "../services/posts.service";
@@ -20,20 +18,16 @@ export default function CreatePost() {
   };
 
   const createPost = async () => {
-    if (post.title.length < 7) {
-      return alert('Title must be at least 7 characters long');
+    if (post.title.length > 7 && post.title.length < 25) {
+      return alert('Title must be bigger than 7 characters and less than 25 characters long');
     }
-    if (post.content.length < 15) {
-      return alert('Content must be at least 15 characters long');
+    if (post.content.length > 15 && post.content.length < 100) {
+      return alert('Content must be bigger than 15 characters and less than 100 characters long');
     }
-    
-   try {
+ 
       await addPost(userData.handle, post.title, post.content);
      
-    } catch (error) {
-      console.error("Възникна грешка при създаването на пост", error);
-      
-    }
+   
 
     setPost({
       title: '',
@@ -41,6 +35,7 @@ export default function CreatePost() {
     });
   };
 
+   console.log(userData);
   return (
     <div>
       <h1>Създай публикация</h1>
