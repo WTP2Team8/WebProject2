@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import './Post.css';
 import Button from '../Button';
-import {  qlikePost } from '../../services/posts.service';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
+import { useState } from 'react';
 
 /**
  * 
@@ -17,11 +17,14 @@ export default function Post({ post, togglePostLike }) {
   const toggleLike = async () => {
     if (post.likedBy.includes(userData.handle)) {
       togglePostLike(userData.handle, post.id);
-    } 
-    
+      setLikeCount(likeCount + 1);
+    } else {
+      togglePostLike(userData.handle, post.id);
+      setLikeCount(likeCount + 1);
+    }
   };
 
-  const likeCount = post.likedBy.length; // Add this line to get the like count
+  const [likeCount, setLikeCount] = useState(post.likedBy.length);
 
   return (
     <div className="post">
@@ -34,7 +37,7 @@ export default function Post({ post, togglePostLike }) {
       <p>{post.content}</p>
       <p>Създаден от --- {userData.handle}</p>
       <p>{new Date(post.createdOn).toLocaleDateString('bg-BG')}</p>
-      <p>Likes: {likeCount}</p> {/* Add this line to display the like count */}
+      <p>Likes: {likeCount}</p> {/* Display the like count */}
       <Button onClick={() => navigate(`/posts/${post.id}`)}>View</Button>
     </div>
   );
