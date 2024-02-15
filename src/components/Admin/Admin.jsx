@@ -1,22 +1,37 @@
 import { useEffect, useState } from "react";
 import Button from "../Button";
-import { getAllUsers } from "../../services/users.service";
+import {
+  getAllUsers,
+  updateBlockedUser,
+  updateUnblockedUser,
+} from "../../services/users.service";
 import { getAllPosts } from "../../services/posts.service";
+import UserView from "../UserView/UserView";
 
 const Admin = () => {
   const [page, setPage] = useState(1);
   const [users, setUsers] = useState(null);
   const [blockedUsers, setBlockedUsers] = useState(null);
   const [posts, setPosts] = useState(null);
+  const [blocked, setBlocked] = useState(false);
 
-//   console.log(users);
+  //   console.log(users);
 
   useEffect(() => {
-    getAllUsers().then((result) => setUsers(result));
+    getAllUsers().then((result) => {
+      setUsers(result.filter((user) => !user.isBlocked));
+      setBlockedUsers(result.filter((user) => user.isBlocked));
+    });
     getAllPosts().then((result) => setPosts(result));
-  }, []);
+  }, [blocked]);
 
-  const handleBlock = () => {}
+  const handleBlock = (userHandle) => {
+    updateBlockedUser(userHandle).then(() => setBlocked(!blocked));
+  };
+
+  const handleUnblock = (userHandle) => {
+    updateUnblockedUser(userHandle).then(() => setBlocked(!blocked));
+  };
 
   return (
     <div className="admin-content">
@@ -32,26 +47,50 @@ const Admin = () => {
             <table>
               <thead>
                 <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Admin</th>
-                    <th>Block User</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Admin</th>
+                  <th>Block User</th>
                 </tr>
               </thead>
               <tbody>
                 {users?.map((user) => (
-                  <tr key={user.id}>
-                    <td>{user.handle}</td>
-                    <td>{user.email}</td>
-                    <td>No</td>
-                    <td><Button onClick={handleBlock}>Block</Button></td>
-                  </tr>
+                  <UserView
+                    key={user.id}
+                    text={"Block"}
+                    user={user}
+                    handleBlock={handleBlock}
+                  />
                 ))}
               </tbody>
             </table>
           </div>
         )}
-        {page === 2 && <div>blocked</div>}
+        {page === 2 && (
+          <div className="admin-page">
+            <h1>Blocked Users:</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Admin</th>
+                  <th>Unblock user</th>
+                </tr>
+              </thead>
+              <tbody>
+                {blockedUsers?.map((user) => (
+                  <UserView
+                    key={user.id}
+                    text={"Unblock"}
+                    user={user}
+                    handleBlock={handleUnblock}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
         {page === 3 && <div>posts</div>}
       </div>
       <div className="admin-footer"></div>
