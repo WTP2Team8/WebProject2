@@ -18,13 +18,10 @@ export default function Post({ post, togglePostLike }) {
     if (post.likedBy.includes(userData.handle)) {
       togglePostLike(userData.handle, post.id);
       setLikeCount(likeCount + 1);
-    } else {
-      togglePostLike(userData.handle, post.id);
-      setLikeCount(likeCount + 1);
-    }
+    } 
   };
 
-  const [likeCount, setLikeCount] = useState(post.likedBy.length);
+  const [likeCount, setLikeCount] = useState(post.likedBy.length); // Initialize the like count
 
   return (
     <div className="post">

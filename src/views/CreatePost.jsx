@@ -21,12 +21,12 @@ export default function CreatePost() {
     if (userData.isBlocked) {
       return alert("Blocked users cannot create posts!");
     }
-    if (post.title.length < 7 && post.title.length > 25) {
+    if (post.title.length > 5 && post.title.length < 25) {
       return alert(
-        "Title must be bigger than 7 characters and less than 25 characters long"
+        "Title must be bigger than 5 characters and less than 25 characters long"
       );
     }
-    if (post.content.length < 15 && post.content.length > 100) {
+    if (post.content.length > 15 && post.content.length < 100) {
       return alert(
         "Content must be bigger than 15 characters and less than 100 characters long"
       );
