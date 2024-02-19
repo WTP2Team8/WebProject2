@@ -40,7 +40,7 @@ export default function SinglePost() {
         setAuthor(snapshot.val());
       }
     });
-  }, []);
+  }, [post?.author]);
 
   const toggleLike = () => {
     likePost(userData.handle, post.id).then(() => {
@@ -83,7 +83,7 @@ export default function SinglePost() {
       <div className="post">
         <div className="single-post-header">
           <span>{post?.createdOn}</span>
-          <span>{likeCount} likes</span>
+          <span>{likeCount} харесвания</span>
         </div>
         <div className="single-post-content">
           <div id="single-post-left-side">
@@ -93,10 +93,10 @@ export default function SinglePost() {
               <span>{author?.lastName || "lastName"}</span>
             </div>
             <span>
-              {(author?.posts && Object.keys(author.posts).length) || 0} posts
+              {(author?.posts && Object.keys(author.posts).length) || 0} публикации
             </span>
-            <span>{author?.lastName || 0} likes</span>
-            <span>{author?.lastName || 0} comments</span>
+            <span>{likeCount || 0} харесвания</span>
+            <span>{author?.comments || 0} коментара</span>
             <span></span>
           </div>
           <div id="single-post-right-side">
@@ -113,21 +113,21 @@ export default function SinglePost() {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
               />
-              <Button onClick={handleAddComment}>Add Comment</Button>
+              <Button onClick={handleAddComment}>Добави коментар</Button>
             </div>
           ) : (
-            <Button onClick={() => setAddComment(true)}>Comment</Button>
+            <Button onClick={() => setAddComment(true)}>Коментирай публикацията</Button>
           )}
           {liked ? (
-            <Button onClick={toggleDislike}>Dislike</Button>
+            <Button onClick={toggleDislike}>Нехаресвам</Button>
           ) : (
-            <Button onClick={toggleLike}>Like</Button>
+            <Button onClick={toggleLike}>Харесвам</Button>
           )}
         </div>
       </div>
       {comments && (
         <div id="single-post-comments">
-          <h3>Comments</h3>
+          <h3>Коментари</h3>
           {Object.keys(comments).map((key) => (
             <>
             <div key={key} className="comment">
@@ -136,7 +136,7 @@ export default function SinglePost() {
               <span>{comments[key].createdOn}</span>
               <span>{comments[key].content}</span>
               {comments[key].handle === userData?.handle && (
-                <Button onClick={() => handleDeleteComment(key)}>Delete</Button>
+                <Button onClick={() => handleDeleteComment(key)}>Изтрии публикацията</Button>
               )}
             </div>
             <hr />

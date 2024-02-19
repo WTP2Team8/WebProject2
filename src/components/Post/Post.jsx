@@ -45,16 +45,16 @@ export default function Post({ post }) {
       <h4>
         {post.title}{" "}
         {liked ? (
-          <Button onClick={toggleDislike}>Dislike</Button>
+          <Button onClick={toggleDislike}>Нехаресвам</Button>
         ) : (
-          <Button onClick={toggleLike}>Like</Button>
+          <Button onClick={toggleLike}>Харесвам</Button>
         )}
       </h4>
       <p>{post.content}</p>
-      <p>Създаден от --- {post.author}</p>
+      <p>Създаден от {userData.firstName} { userData.lastName}</p>
       <p>{new Date(post.createdOn).toLocaleDateString("bg-BG")}</p>
       <p>Likes: {likeCount}</p> {/* Display the like count */}
-      <Button onClick={() => navigate(`/posts/${post.id}`)}>View</Button>
+      <Button onClick={() => navigate(`/posts/${post.id}`)}>Прегледай и Коментирай</Button>
     </div>
   );
 }
