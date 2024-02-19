@@ -8,6 +8,6 @@ footer {
     color: white;
     height: 40px;
     width: 100%;
-    position: absolute;
+    position: fixed; /* Changed from absolute to fixed */
     bottom: 0;
 }

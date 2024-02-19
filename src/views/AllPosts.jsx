@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllPosts, likePost } from "../services/posts.service";
 import Post from "../components/Post/Post";
 import { useSearchParams } from "react-router-dom";
+import "./AllPosts.css";
 
 export default function AllPosts() {
   const [posts, setPosts] = useState([]);

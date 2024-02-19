@@ -77,7 +77,7 @@ export const updateUserInfo = async (username, prop, value) => {
   await update(ref(db, `users/${username}`), { [prop]: value });
 };
 
-export const updateUserPosts = (username, postId, title) => {
+export const updateUserPosts = async (username, postId, title) => {
   let updatePosts = {};
 
   get(ref(db, `users/${username}/posts/`)).then((result) => {

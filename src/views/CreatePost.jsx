@@ -9,6 +9,7 @@ export default function CreatePost() {
   const [post, setPost] = useState({
     title: "",
     content: "",
+    category: ""
   });
 
   const [error, setError] = useState("");
@@ -31,18 +32,24 @@ export default function CreatePost() {
         "Заглавието трябва да бъде с дължина между 16 и 64 символа!"
       );
     }
-    if (post.content.length < 32 || post.content.length > 8192) {
+    if (post.content.length < 10 || post.content.length > 8192) {
       return setError(
         "Съдържанието трябва да бъде с дължина между 32 и 8192 символа!"
       );
     }
 
-    await addPost(userData.handle, post.title, post.content);
+    await addPost(userData.handle, post.title, post.content, post.category);
 
     setPost({
       title: "",
       content: "",
+      category: ""
     });
+  };
+
+  const handleCategoryChange = (e) => {
+    const selectedCategory = e.target.value;
+    updatePost(selectedCategory, "category");
   };
 
   return (
@@ -65,8 +72,18 @@ export default function CreatePost() {
       <label htmlFor="select-option">Категория на публикацията</label>
       <span className="require">*</span>
       <br />
-      <select name="select-option" id="select-option">
-  
+      <select
+        name="select-option"
+        id="select-option"
+        value={post.category}
+        onChange={handleCategoryChange}
+      >
+        <option value="meat-category">Месни основни</option>
+        <option value="vegeterian-category">Вегетариански основни</option>
+        <option value="salads-category">Салати</option>
+        <option value="soups-category">Супи</option>
+        <option value="deserts-category">Десерти</option>
+        <option value="others-category">Други</option>
       </select>
 
       <br />
