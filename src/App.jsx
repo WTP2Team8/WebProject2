@@ -19,6 +19,12 @@ import AllPosts from "./views/AllPosts";
 import SinglePost from "./views/SinglePost";
 import CreatePost from "./views/CreatePost";
 import Admin from "./components/Admin/Admin";
+import MeatCategory from "./views/Categories/MeatCategory";
+import VegeterianCategory from "./views/Categories/VegeterianCategory";
+import SoupsCategory from "./views/Categories/SoupsCategory";
+import SaladsCategory from "./views/Categories/SaladsCategory";
+import DesertsCategory from "./views/Categories/DesertsCategory";
+import OthersCategory from "./views/Categories/OthersCategory";
 
 function App() {
   const [context, setContext] = useState({
@@ -88,6 +94,12 @@ function App() {
             <Route path="/register" element={<Register />}></Route>
             <Route path="/admin" element={<Admin />}></Route>
             <Route path="*" element={<NotFound />} />
+            <Route path="/meat-category" element={<MeatCategory />} />
+            <Route path="/vegeterian-category" element={<VegeterianCategory />} />
+            <Route path= "/salads-category" element={<SaladsCategory />} />
+            <Route path="/soups-category" element={<SoupsCategory />} />
+            <Route path="/deserts-category" element={<DesertsCategory />} />
+            <Route path="/others-category" element={<OthersCategory />} />
           </Routes>
           <Footer />
         </AppContext.Provider>

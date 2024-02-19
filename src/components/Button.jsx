@@ -8,7 +8,12 @@ import PropTypes from "prop-types";
 export default function Button({ children = null, onClick = () => {} }) {
   return (
     <>
-      <button onClick={onClick}>{children}</button>
+      <button
+        onClick={onClick}
+        style={{ cursor: "pointer" }} // Add this line
+      >
+        {children}
+      </button>
     </>
   );
 }

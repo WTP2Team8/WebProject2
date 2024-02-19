@@ -1,11 +1,12 @@
+import React, { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./Post.css";
 import Button from "../Button";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
-import { useState } from "react";
 import { dislikePost, likePost } from "../../services/posts.service";
+import { db } from "../../config/firebase-config";
+import { get, ref } from "firebase/database";
 
 /**
  *
@@ -15,9 +16,15 @@ export default function Post({ post }) {
   const navigate = useNavigate();
   const { userData } = useContext(AppContext);
   const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(post.likedBy.length); // Initialize the like count
+  const [likeCount, setLikeCount] = useState(0);
 
-  // console.log(post);
+  useEffect(() => {
+    if (post?.id) {
+      getLikedByValue(post.id).then(likedBy => {
+        setLikeCount(likedBy.length);
+      });
+    }
+  }, [post]);
 
   const toggleLike = () => {
     likePost(userData.handle, post.id).then(() => {
@@ -57,8 +64,18 @@ Post.propTypes = {
     id: PropTypes.string,
     title: PropTypes.string,
     content: PropTypes.string,
-    createdOn: PropTypes.string,
-    likedBy: PropTypes.array,
+    createdOn: PropTypes.string
   }),
   togglePostLike: PropTypes.func,
+};
+
+export const getLikedByValue = async (postId) => {
+  const snapshot = await get(ref(db, `posts/${postId}/likedBy`));
+  if (!snapshot.exists()) {
+    return [];
+  }
+
+  const likedBy = Object.keys(snapshot.val());
+
+  return likedBy;
 };
