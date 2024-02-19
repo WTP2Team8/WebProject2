@@ -91,3 +91,11 @@
 .profile-link:hover {
   color: #ffcc00;
 }
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Change align-items to flex-end */
+}
+

@@ -24,7 +24,7 @@ const Navbar = () => {
         <li className="nav-item">
           <Link to="/contacts">Контакти</Link>
         </li>
-        <SearchBar />
+        <SearchBar style={{ width: "200px", flex: "0 0 auto" }} />
         <ProfileMenu />
       </ul>
     </nav>

@@ -3,6 +3,7 @@ import { getAllPosts, likePost } from "../services/posts.service";
 import Post from "../components/Post/Post";
 import { useSearchParams } from "react-router-dom";
 import "./AllPosts.css";
+import SearchBar from "../components/SearchBar";
 
 export default function AllPosts() {
   const [posts, setPosts] = useState([]);
@@ -34,8 +35,7 @@ export default function AllPosts() {
   return (
     <div >
       <h1>Всички публикации</h1>
-        <label className="search-bar" htmlFor="search">Търсене </label>
-        <input value={search} onChange={e => setSearch(e.target.value)} type="text" name="search" id="search" /><br/>
+        <SearchBar/>
         {posts.map((post) => (
           <Post key={post.id} post={post}/>
         ))}

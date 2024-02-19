@@ -10,7 +10,7 @@ import { get, ref } from "firebase/database";
 
 /**
  *
- * @param {{ post: { id: string, title: string, content: string, createdOn: object, liked: boolean }, togglePostLike: function }} props
+ * @param {{ post: { id: string, author: string, title: string, content: string, createdOn: object, liked: boolean }, togglePostLike: function }} props
  */
 export default function Post({ post }) {
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ export default function Post({ post }) {
         )}
       </h4>
       <p>{post.content}</p>
-      <p>Създаден от --- {userData?.handle}</p>
+      <p>Създаден от --- {post.author}</p>
       <p>{new Date(post.createdOn).toLocaleDateString("bg-BG")}</p>
       <p>Likes: {likeCount}</p> {/* Display the like count */}
       <Button onClick={() => navigate(`/posts/${post.id}`)}>View</Button>
@@ -62,6 +62,7 @@ export default function Post({ post }) {
 Post.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.string,
+    author: PropTypes.string,
     title: PropTypes.string,
     content: PropTypes.string,
     createdOn: PropTypes.string
