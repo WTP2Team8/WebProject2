@@ -19,6 +19,7 @@ import AllPosts from "./views/AllPosts";
 import SinglePost from "./views/SinglePost";
 import CreatePost from "./views/CreatePost";
 import Admin from "./components/Admin/Admin";
+import Profile from "./components/Profile";
 
 function App() {
   const [context, setContext] = useState({
@@ -87,6 +88,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />}></Route>
             <Route path="/admin" element={<Admin />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />

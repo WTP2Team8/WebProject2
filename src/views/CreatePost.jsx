@@ -9,7 +9,7 @@ export default function CreatePost() {
   const [post, setPost] = useState({
     title: "",
     content: "",
-    category: ""
+    category: "",
   });
 
   const [error, setError] = useState("");
@@ -38,18 +38,16 @@ export default function CreatePost() {
       );
     }
 
-    if(post.category === ""){
+    if (post.category === "") {
       return setError("Моля изберете категория на публикацията!");
     }
 
     await addPost(userData.handle, post.title, post.content, post.category);
 
-    
-
     setPost({
       title: "",
       content: "",
-      category: ""
+      category: "",
     });
   };
 
