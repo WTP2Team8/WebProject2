@@ -3,6 +3,7 @@ import Button from "./Button";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { logoutUser } from "../services/auth.service";
+import "./Header.css";
 
 export default function Header() {
   const { user, userData, setContext } = useContext(AppContext);
@@ -14,6 +15,11 @@ export default function Header() {
 
   return (
     <header>
+      {/* <img
+        className="ladle"
+        src="/images/cherpache.png"
+        alt="Cherpache Logo"
+      /> */}
       {user && <NavLink to="/posts">Всички постове</NavLink>}
       {user && <NavLink to="/posts-create">Създай пост</NavLink>}
       {user ? (

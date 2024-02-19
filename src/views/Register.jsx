@@ -6,20 +6,58 @@ import { getUserByHandle } from "../services/users.service";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
+import "./Register.css";
 
 export default function Register() {
   const { setContext } = useContext(AppContext);
   const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
     handle: "",
     email: "",
     password: "",
   });
+  const [error, setError] = useState('');
   const navigate = useNavigate();
+
   const updateForm = (prop) => (e) => {
     setForm({ ...form, [prop]: e.target.value });
+    setError('');
   };
+
   const register = async () => {
-    // TODO: Validate inputs
+    if (form.firstName.length < 4 || form.firstName.length > 32) {
+      setError("First Name should be between 4 and 32 characters long!");
+      return;
+    }
+
+    if (form.lastName.length < 4 || form.lastName.length > 32) {
+      setError("Last Name should be between 4 and 32 characters long!");
+      return;
+    }
+
+    if (!form.handle) {
+      setError("Username is required!");
+      return;
+    }
+
+    const isValidEmail = (email) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    };
+
+    const isValid = isValidEmail(form.email);
+
+    if (!isValid) {
+      setError("Email is not valid!");
+      return;
+    }
+
+    if (!form.password) {
+      setError("Password is required!");
+      return;
+    }
+
     try {
       const user = await getUserByHandle(form.handle);
       if (user.exists()) {
@@ -29,7 +67,13 @@ export default function Register() {
         );
       }
       const credentials = await registerUser(form.email, form.password);
-      await createUserHandle(form.handle, credentials.user.uid, form.email);
+      await createUserHandle(
+        form.firstName,
+        form.lastName,
+        form.handle,
+        credentials.user.uid,
+        form.email
+      );
 
       setContext({ user, userData: null });
       navigate("/");
@@ -39,8 +83,25 @@ export default function Register() {
   };
 
   return (
-    <div>
+    <div id="sign-up-view">
       <h1>Register</h1>
+      {error && <div id="error">{error}</div>}
+      <label htmlFor="handle">Име: </label>
+      <input
+        value={form.firstName}
+        onChange={updateForm("firstName")}
+        type="text"
+        name="firstName"
+        id="firstName"
+      />
+      <label htmlFor="lastName">Фамилия: </label>
+      <input
+        value={form.lastName}
+        onChange={updateForm("lastName")}
+        type="text"
+        name="lastName"
+        id="lastName"
+      />
       <label htmlFor="handle">Потребителско име: </label>
       <input
         value={form.handle}

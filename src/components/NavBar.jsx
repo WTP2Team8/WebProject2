@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import CategoryMenu from './CategoryMenu';
-import './NavBar.css';
-import ProfileMenu from './ProfileMenu';
-import SearchBar from './SearchBar';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import CategoryMenu from "./CategoryMenu";
+import "./NavBar.css";
+import ProfileMenu from "./ProfileMenu";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   return (
     <nav className="navbar">
       <ul className="nav-list">
-        <li className="nav-item">
-          <Link to="/">Начало</Link>
-        </li>
+        <li><img
+        className="ladle"
+        src="/images/cherpache.png"
+        alt="Cherpache Logo"
+      /></li>
         <CategoryMenu />
         <li className="nav-item">
           <Link to="/posts">Публикации</Link>

@@ -32,8 +32,10 @@ export const getAllUsers = async () => {
   return users;
 };
 
-export const createUserHandle = (handle, uid, email) => {
+export const createUserHandle = (firstName, lastName, handle, uid, email) => {
   return set(ref(db, `users/${handle}`), {
+    firstName,
+    lastName,
     handle,
     uid,
     email,
@@ -69,4 +71,22 @@ export const updateAdminStatus = async (handle) => {
   updateUser[`/users/${handle}/isAdmin`] = !isAdmin.val();
   console.log(isAdmin.val());
   return update(ref(db), updateUser);
+};
+
+export const updateUserInfo = async (username, prop, value) => {
+  await update(ref(db, `users/${username}`), { [prop]: value });
+};
+
+export const updateUserPosts = (username, postId, title) => {
+  let updatePosts = {};
+
+  get(ref(db, `users/${username}/posts/`)).then((result) => {
+    if (result.exists()) {
+      updatePosts = { ...result.val() };
+    }
+
+    updatePosts[postId] = title;
+
+    return update(ref(db, `users/${username}/posts/`), updatePosts);
+  });
 };

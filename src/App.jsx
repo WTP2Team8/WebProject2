@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Home from "./views/Home";
+
 import Contacts from "./views/Contacts";
 import Trending from "./views/Trending";
 import Footer from "./components/Footer";
@@ -20,10 +20,7 @@ import SinglePost from "./views/SinglePost";
 import CreatePost from "./views/CreatePost";
 import Admin from "./components/Admin/Admin";
 
-
 function App() {
-  
-
   const [context, setContext] = useState({
     user: null,
     userData: null,
@@ -31,16 +28,21 @@ function App() {
 
   const [user, loading, error] = useAuthState(auth);
 
+  if (context.user !== user) {
+    setContext({ user });
+  }
+
   useEffect(() => {
     if (user) {
       getUserData(user.uid).then((snapshot) => {
         // console.log(user.uid);
-        
+
         if (snapshot.exists()) {
           // console.log(snapshot.val());
-          
-          setContext({user,
-            userData: snapshot.val()[Object.keys(snapshot.val())[0]]
+
+          setContext({
+            user,
+            userData: snapshot.val()[Object.keys(snapshot.val())[0]],
           });
         } else {
           console.log("No such document!");
@@ -50,18 +52,38 @@ function App() {
   }, [user]);
 
   return (
-    <>
+    // <div im>
       <BrowserRouter>
         <AppContext.Provider value={{ ...context, setContext }}>
-        <Navbar />
+          <Navbar />
           <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/trending" element={<Trending />} />
-            <Route path="/posts" element={<Authenticated><AllPosts /></Authenticated>} />
-            <Route path="/posts/:id" element={<Authenticated><SinglePost /></Authenticated>} />
-            <Route path="/posts-create" element={<Authenticated><CreatePost /></Authenticated>} />
+            <Route
+              path="/posts"
+              element={
+                <Authenticated>
+                  <AllPosts />
+                </Authenticated>
+              }
+            />
+            <Route
+              path="/posts/:id"
+              element={
+                <Authenticated>
+                  <SinglePost />
+                </Authenticated>
+              }
+            />
+            <Route
+              path="/posts-create"
+              element={
+                <Authenticated>
+                  <CreatePost />
+                </Authenticated>
+              }
+            />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />}></Route>
             <Route path="/admin" element={<Admin />}></Route>
@@ -70,7 +92,7 @@ function App() {
           <Footer />
         </AppContext.Provider>
       </BrowserRouter>
-    </>
+    // </div>
   );
 }
 

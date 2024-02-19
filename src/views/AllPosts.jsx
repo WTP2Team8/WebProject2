@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllPosts } from "../services/posts.service";
+import { getAllPosts, likePost } from "../services/posts.service";
 import Post from "../components/Post/Post";
 import { useSearchParams } from "react-router-dom";
 
@@ -17,15 +17,18 @@ export default function AllPosts() {
     getAllPosts(search).then(setPosts);
   }, [search]);
 
-  const togglePostLike = (handle, id) => {
-    setPosts(posts.map(p => {
-      if (p.id === id) {
-        p.likedBy = p.likedBy.includes(handle) ? p.likedBy.filter(u => u !== handle) : [...p.likedBy, handle];
-      }
-      return p;
+  // const togglePostLike = (handle, id) => {
+  //   likePost(handle, id).then(() => {
+
+  //   })
+  //   // setPosts(posts.map(p => {
+  //   //   if (p.id === id) {
+  //   //     p.likedBy = p.likedBy.includes(handle) ? p.likedBy.filter(u => u !== handle) : [...p.likedBy, handle];
+  //   //   }
+  //   //   return p;
     
-    }));
-  };
+  //   // }));
+  // };
 
   return (
     <div >
@@ -33,7 +36,7 @@ export default function AllPosts() {
         <label className="search-bar" htmlFor="search">Търсене </label>
         <input value={search} onChange={e => setSearch(e.target.value)} type="text" name="search" id="search" /><br/>
         {posts.map((post) => (
-          <Post key={post.id} post={post} togglePostLike={togglePostLike}/>
+          <Post key={post.id} post={post}/>
         ))}
     </div>
   );

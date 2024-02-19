@@ -1,0 +1,20 @@
+@tailwind utilities;
+
+.createPostField {
+  padding: 100px;
+  margin-right: 300px;
+  margin-left: 300px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: -110px;
+  margin-bottom: px;
+}
+
+* {
+  font-family: "Open Sans", "Open Sans-fallback", sans-serif;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /* margin: 0; */
+  /* padding: 0; */
+}
