@@ -38,7 +38,13 @@ export default function CreatePost() {
       );
     }
 
+    if(post.category === ""){
+      return setError("Моля изберете категория на публикацията!");
+    }
+
     await addPost(userData.handle, post.title, post.content, post.category);
+
+    
 
     setPost({
       title: "",
@@ -78,6 +84,9 @@ export default function CreatePost() {
         value={post.category}
         onChange={handleCategoryChange}
       >
+        <option value="" disabled selected>
+          Изберете категория
+        </option>
         <option value="meat-category">Месни основни</option>
         <option value="vegeterian-category">Вегетариански основни</option>
         <option value="salads-category">Салати</option>
