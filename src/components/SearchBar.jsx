@@ -8,6 +8,7 @@ export default function SearchBar() {
     const handleSubmit = (event) => {
         event.preventDefault();
         navigate(`/search/${term}`);
+        setTerm(''); // Resetting the search term to empty string
     };
 
     return (

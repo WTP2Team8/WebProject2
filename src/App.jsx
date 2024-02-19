@@ -26,6 +26,7 @@ import SaladsCategory from "./views/Categories/SaladsCategory";
 import DesertsCategory from "./views/Categories/DesertsCategory";
 import OthersCategory from "./views/Categories/OthersCategory";
 import SearchResults from "./views/SearchedItems";
+import MyPosts from "./views/MyPosts";
 
 function App() {
   const [context, setContext] = useState({
@@ -102,6 +103,7 @@ function App() {
             <Route path="/deserts-category" element={<DesertsCategory />} />
             <Route path="/others-category" element={<OthersCategory />} />
             <Route path="/search/:term" element={<SearchResults />} />
+            <Route path="/my-posts" element={<MyPosts />} />
           </Routes>
           <Footer />
         </AppContext.Provider>
