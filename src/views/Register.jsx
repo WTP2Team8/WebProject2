@@ -17,27 +17,28 @@ export default function Register() {
     email: "",
     password: "",
   });
-  const [error, setError] = useState('');
+
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const updateForm = (prop) => (e) => {
     setForm({ ...form, [prop]: e.target.value });
-    setError('');
+    setError("");
   };
 
   const register = async () => {
     if (form.firstName.length < 4 || form.firstName.length > 32) {
-      setError("First Name should be between 4 and 32 characters long!");
+      setError("Първото име трябва да е с дължина между 4 и 32 символа!");
       return;
     }
 
     if (form.lastName.length < 4 || form.lastName.length > 32) {
-      setError("Last Name should be between 4 and 32 characters long!");
+      setError("Фамилията трябва да бъде с дължина между 4 и 32 символа!");
       return;
     }
 
     if (!form.handle) {
-      setError("Username is required!");
+      setError("Необходимо е потребителско име!");
       return;
     }
 
@@ -49,12 +50,12 @@ export default function Register() {
     const isValid = isValidEmail(form.email);
 
     if (!isValid) {
-      setError("Email is not valid!");
+      setError("Невалиден имейл!");
       return;
     }
 
     if (!form.password) {
-      setError("Password is required!");
+      setError("Необходима е парола!");
       return;
     }
 
@@ -63,7 +64,7 @@ export default function Register() {
       if (user.exists()) {
         console.log(user.val());
         return console.log(
-          `Потребителско име @${form.handle} вече съществува !`
+          `Потребителско име @${form.handle} вече съществува!`
         );
       }
       const credentials = await registerUser(form.email, form.password);
@@ -84,7 +85,7 @@ export default function Register() {
 
   return (
     <div id="sign-up-view">
-      <h1>Register</h1>
+      <h1>Регистрация</h1>
       {error && <div id="error">{error}</div>}
       <label htmlFor="handle">Име: </label>
       <input

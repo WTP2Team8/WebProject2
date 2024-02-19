@@ -10,6 +10,7 @@ export default function CreatePost() {
     title: "",
     content: "",
   });
+
   const [error, setError] = useState("");
 
   const updatePost = (value, key) => {
@@ -22,16 +23,17 @@ export default function CreatePost() {
 
   const createPost = async () => {
     if (userData.isBlocked) {
-      return setError("Blocked users cannot create posts!");
+      return setError("Блокирани потребители не могат да създават постове!");
     }
+
     if (post.title.length < 16 || post.title.length > 64) {
       return setError(
-        "Title must be bigger than 16 characters and less than 64 characters long"
+        "Заглавието трябва да бъде с дължина между 16 и 64 символа!"
       );
     }
     if (post.content.length < 32 || post.content.length > 8192) {
       return setError(
-        "Content must be bigger than 32 characters and less than 8192 characters long"
+        "Съдържанието трябва да бъде с дължина между 32 и 8192 символа!"
       );
     }
 
@@ -48,6 +50,7 @@ export default function CreatePost() {
       <h1>Нова Публикация във Форума</h1>
       <label htmlFor="input-title">Заглавие</label>
       <span className="require">* </span>
+      {error && <div id="error">{error}</div>}
 
       <input
         className="w-full  border border-red-320 rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-red-500"
@@ -63,9 +66,7 @@ export default function CreatePost() {
       <span className="require">*</span>
       <br />
       <select name="select-option" id="select-option">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+  
       </select>
 
       <br />
