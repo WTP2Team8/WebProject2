@@ -14,7 +14,7 @@ export default function Header() {
   };
 
   return (
-    <header>
+    <header className="header">
       {/* <img
         className="ladle"
         src="/images/cherpache.png"
@@ -24,7 +24,7 @@ export default function Header() {
       {user && <NavLink to="/posts-create">Създай пост</NavLink>}
       {user ? (
         <>
-          {`Здравей, ${userData?.handle}`}
+          <span className="greeting">{`Здравей, ${userData?.handle}`}</span>
           <Button onClick={logout}>Изход</Button>
         </>
       ) : (

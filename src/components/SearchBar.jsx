@@ -1,20 +1,26 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function SearchBar() {
-    const [searchQuery, setSearchQuery] = useState('');
+    const [term, setTerm] = useState('');
+    const navigate = useNavigate();
 
-    const handleSearchInputChange = (event) => {
-        setSearchQuery(event.target.value);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        navigate(`/search/${term}`);
+        setTerm(''); // Resetting the search term to empty string
     };
 
     return (
-        <li id = "search-bar" className="nav-item">
+        <form onSubmit={handleSubmit} style={{ justifyContent: 'center'}}>
             <input
                 type="text"
-                placeholder="Търсене..."
-                value={searchQuery}
-                onChange={handleSearchInputChange}
+                value={term}
+                onChange={(e) => setTerm(e.target.value)}
+                placeholder="Search posts..."
+                style={{ marginRight: '10px', marginTop: '20px'}}
             />
-        </li>
+            <button type="submit">Search</button>
+        </form>
     );
 }

@@ -82,10 +82,10 @@ export const addPost = async (author, title, content, category) => {
     title,
     content,
     category,
-    // createdOn: Date.now(),
     createdOn: new Date().toString(),
     comments: {},
     likes: 0,
+    likedBy: [] // Add the likedBy property as an empty array
   });
 
   await updateUserPosts(author, result.key, title);

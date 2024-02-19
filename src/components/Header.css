@@ -9,4 +9,24 @@
 header {
   margin-top: 100px;
   margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+header a {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.greeting {
+  margin-right: auto;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+header Button {
+  margin-right: 50px;
+  padding: 8px 16px;
+}
+
