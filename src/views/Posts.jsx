@@ -33,6 +33,7 @@ const CreatePost = () => {
         e.preventDefault();
         const auth = getAuth();
         const user = auth.currentUser;
+        console.log(user);
 
         if (user) {
             try {

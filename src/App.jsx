@@ -69,14 +69,7 @@ function App() {
         <Routes>
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/trending" element={<Trending />} />
-          <Route
-            path="/posts"
-            element={
-              <Authenticated>
-                <AllPosts />
-              </Authenticated>
-            }
-          />
+            <Route path="/posts" element={<AllPosts />} />
           <Route
             path="/posts/:id"
             element={

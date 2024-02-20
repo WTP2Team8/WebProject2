@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./Post.css";
 import Button from "../Button";
@@ -46,7 +46,7 @@ export default function Post({ post }) {
         {post.title}{" "}
         {userData ? (
           liked ? (
-            <Button  onClick={toggleDislike}>Не харесвам</Button>
+            <Button onClick={toggleDislike}>Не харесвам</Button>
           ) : (
             <Button onClick={toggleLike}>Харесвам</Button>
           )
@@ -59,7 +59,8 @@ export default function Post({ post }) {
       <p className="text--500">
         {new Date(post.createdOn).toLocaleDateString("bg-BG")}
       </p>
-      <p className="text-black-500">Likes: {likeCount}</p> {/* Display the like count */}
+      <p className="text-black-500">Likes: {likeCount}</p>{" "}
+      {/* Display the like count */}
       <Button
         onClick={() => navigate(`/posts/${post.id}`)}
         className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
@@ -68,7 +69,6 @@ export default function Post({ post }) {
       </Button>
     </div>
   );
-  
 }
 
 Post.propTypes = {
