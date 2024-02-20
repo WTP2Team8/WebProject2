@@ -16,8 +16,8 @@ export default function Contacts() {
 
       <img className="w-60 h-60 " src="https://thehotbid.com/wp-content/uploads/2019/03/1210-3.jpg" alt="logo" />
       <p className=" content-center mb-7" >ПРОДАДЕНО! Черпак за пунш от Gorham’s Narragansett Pattern Commanded</p>
-      <button onClick={navigateToArticle} className="bg-yellow-500 cursor-pointer hover:bg-green-700 ml-7 text-red font-bold
-       py-4 px-7 rounded transition duration-300 ease-in-out">
+      <button onClick={navigateToArticle} className=" bg-yellow-500 cursor-pointer hover:bg-green-700 ml-7 text-red font-bold
+       py-4 px-7 rounded transition duration-300 ease-in-out" >
         Линк към статията</button>
       </div>
       

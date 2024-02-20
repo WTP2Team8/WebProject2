@@ -43,14 +43,14 @@ const Admin = () => {
   return (
     <div className="admin-content">
       <div className="admin-header flex justify-center space-x-4">
-        <Button onClick={() => setPage(1)}>Users</Button>
-        <Button onClick={() => setPage(2)}>Blocked Users</Button>
-        <Button onClick={() => setPage(3)}>Posts</Button>
+        <Button onClick={() => setPage(1)}>Потребители</Button>
+        <Button onClick={() => setPage(2)}>Блокирани потребители</Button>
+        <Button onClick={() => setPage(3)}>Публикации</Button>
       </div>
       <div className="admin-main">
         {page === 1 && (
           <div className="admin-page">
-            <h1 className="text-2xl font-bold mb-4">Users:</h1>
+            <h1 className="text-2xl font-bold mb-4">Потребители:</h1>
             <table className="w-full">
               <thead>
                 <tr>
@@ -76,7 +76,7 @@ const Admin = () => {
         )}
         {page === 2 && (
           <div className="admin-page">
-            <h1 className="text-2xl font-bold mb-4">Blocked Users:</h1>
+            <h1 className="text-2xl font-bold mb-4">Блокирани потребители:</h1>
             <table className="w-full">
               <thead>
                 <tr>
@@ -101,7 +101,7 @@ const Admin = () => {
         )}
         {page === 3 && (
           <div className="admin-page">
-            <h1 className="text-2xl font-bold mb-4">Posts:</h1>
+            <h1 className="text-2xl font-bold mb-4 font-serif mb-3">Публикации:</h1>
             <table className="w-full">
               <thead>
                 <tr>
@@ -119,7 +119,7 @@ const Admin = () => {
                     <td>No</td>
                     <td>
                       <Button onClick={() => handleDeletePost(post.id)}>
-                        Delete
+                        Изтрии
                       </Button>
                     </td>
                   </tr>
