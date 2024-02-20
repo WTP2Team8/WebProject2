@@ -1,13 +1,12 @@
 export default function Contacts() {
-    return (
-      <div>
-        <h1>Контакти</h1>
-        <div>
-            <p>Автори: Антония Асенова, Станислав Христов, Радослав Костадинов</p>
-            <p>Държава: България</p>
-            <p>Година: 2024</p>
-        </div>
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-4">Контакти</h1>
+      <div className="bg-gray-100 p-4 rounded-lg">
+        <p className="mb-2">Автори: Антония Асенова, Станислав Христов, Радослав Костадинов</p>
+        <p className="mb-2">Държава: България</p>
+        <p className="mb-2">Година: 2024</p>
       </div>
-    );
-  }
-  
+    </div>
+  );
+}

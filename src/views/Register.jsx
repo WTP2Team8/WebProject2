@@ -84,50 +84,55 @@ export default function Register() {
   };
 
   return (
-    <div id="sign-up-view">
-      <h1>Регистрация</h1>
-      {error && <div id="error">{error}</div>}
-      <label htmlFor="handle">Име: </label>
+    <div id="sign-up-view" className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-3xl font-bold mb-4">Регистрация</h1>
+      {error && <div id="error" className="text-red-500 mb-4">{error}</div>}
+      <label htmlFor="handle" className="mb-2">Име: </label>
       <input
         value={form.firstName}
         onChange={updateForm("firstName")}
         type="text"
         name="firstName"
         id="firstName"
+        className="border border-gray-300 rounded-md px-2 py-1 mb-2"
       />
-      <label htmlFor="lastName">Фамилия: </label>
+      <label htmlFor="lastName" className="mb-2">Фамилия: </label>
       <input
         value={form.lastName}
         onChange={updateForm("lastName")}
         type="text"
         name="lastName"
         id="lastName"
+        className="border border-gray-300 rounded-md px-2 py-1 mb-2"
       />
-      <label htmlFor="handle">Потребителско име: </label>
+      <label htmlFor="handle" className="mb-2">Потребителско име: </label>
       <input
         value={form.handle}
         onChange={updateForm("handle")}
         type="text"
         name="handle"
         id="handle"
+        className="border border-gray-300 rounded-md px-2 py-1 mb-2"
       />
       <br />
-      <label htmlFor="email">Имейл: </label>
+      <label htmlFor="email" className="mb-2">Имейл: </label>
       <input
         value={form.email}
         onChange={updateForm("email")}
         type="text"
         name="email"
         id="email"
+        className="border border-gray-300 rounded-md px-2 py-1 mb-2"
       />
       <br />
-      <label htmlFor="password">Парола: </label>{" "}
+      <label htmlFor="password" className="mb-2">Парола: </label>{" "}
       <input
         value={form.password}
         onChange={updateForm("password")}
         type="password"
         name="password"
         id="password"
+        className="border border-gray-300 rounded-md px-2 py-1 mb-2"
       />{" "}
       <br /> <br />
       <Button onClick={register}>Регистрация</Button>

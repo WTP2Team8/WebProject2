@@ -33,29 +33,37 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <label htmlFor="email">Имейл: </label>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-3xl font-bold mb-4">Login</h1>
+      <label htmlFor="email" className="mb-2">
+        Имейл:
+      </label>
       <input
         value={form.email}
         onChange={updateForm("email")}
         type="text"
         id="email"
         name="email"
+        className="border border-gray-300 rounded px-2 py-1 mb-2"
       />
       <br />
       <br />
-      <label htmlFor="password">Парола: </label>
+      <label htmlFor="password" className="mb-2">
+        Парола:
+      </label>
       <input
         value={form.password}
         onChange={updateForm("password")}
         type="password"
         id="password"
         name="password"
+        className="border border-gray-300 rounded px-2 py-1 mb-2"
       />
       <br />
       <br />
-      <Button onClick={login}>Вход</Button>
+      <Button onClick={login} className="bg-blue-500 text-white px-4 py-2 rounded">
+        Вход
+      </Button>
     </div>
   );
 }

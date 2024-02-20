@@ -58,13 +58,15 @@ export default function CreatePost() {
 
   return (
     <section className="createPostField">
-      <h1>Нова Публикация във Форума</h1>
-      <label htmlFor="input-title">Заглавие</label>
-      <span className="require">* </span>
-      {error && <div id="error">{error}</div>}
+      <h1 className="text-2xl font-bold mb-4">Нова Публикация във Форума</h1>
+      <label htmlFor="input-title" className="block mb-2">
+        Заглавие
+        <span className="require">*</span>
+      </label>
+      {error && <div id="error" className="text-red-500 mb-2">{error}</div>}
 
       <input
-        className="w-full  border border-red-320 rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-red-500"
+        className="w-full border border-red-320 rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-red-500 mb-4"
         value={post.title}
         onChange={(e) => updatePost(e.target.value, "title")}
         type="text"
@@ -72,15 +74,16 @@ export default function CreatePost() {
         id="input-title"
       />
 
-      <br />
-      <label htmlFor="select-option">Категория на публикацията</label>
-      <span className="require">*</span>
-      <br />
+      <label htmlFor="select-option" className="block mb-2">
+        Категория на публикацията
+        <span className="require">*</span>
+      </label>
       <select
         name="select-option"
         id="select-option"
         value={post.category}
         onChange={handleCategoryChange}
+        className="w-full border border-red-320 rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-red-500 mb-4"
       >
         <option value="" disabled selected>
           Изберете категория
@@ -93,12 +96,12 @@ export default function CreatePost() {
         <option value="others-category">Други</option>
       </select>
 
-      <br />
-      <label htmlFor="input-content">Съдържание</label>
-      <span className="require">*</span>
-      <br />
+      <label htmlFor="input-content" className="block mb-2">
+        Съдържание
+        <span className="require">*</span>
+      </label>
       <textarea
-        className="w-full  border border-red-320 rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-red-500"
+        className="w-full border border-red-320 rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-red-500 mb-4"
         value={post.content}
         onChange={(e) => updatePost(e.target.value, "content")}
         name="input-content"
@@ -106,8 +109,7 @@ export default function CreatePost() {
         cols="30"
         rows="10"
       ></textarea>
-      <br />
-      <br />
+
       <Button onClick={createPost}>Създай</Button>
     </section>
   );

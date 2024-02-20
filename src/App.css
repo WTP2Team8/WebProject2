@@ -1,3 +1,9 @@
+/* @tailwind base;
+@tailwind components; */
+@tailwind utilities;
+
+
+
 #root {
   min-width: 1280px;
   margin: 0 auto;
@@ -5,7 +11,7 @@
   /* text-align: center; */
   position: relative;
   height: 92vh;
-  background-color: #FFBE57;
+  background-color: white;
 }
 
 .logo {

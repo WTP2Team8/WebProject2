@@ -66,29 +66,29 @@ const CreatePost = () => {
     };
 
     return (
-        <div>
-            <h2>Създай публикация</h2>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Заглавие</label>
-                <input type="text" id="title" value={title} onChange={handleTitleChange} />
+        <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold mb-4">Създай публикация</h2>
+            <form onSubmit={handleSubmit} className="mb-4">
+                <label htmlFor="title" className="block mb-2">Заглавие</label>
+                <input type="text" id="title" value={title} onChange={handleTitleChange} className="border border-gray-300 rounded px-2 py-1 mb-2" />
 
-                <label htmlFor="content">Съдържание:</label>
-                <textarea id="content" value={content} onChange={handleContentChange} />
+                <label htmlFor="content" className="block mb-2">Съдържание:</label>
+                <textarea id="content" value={content} onChange={handleContentChange} className="border border-gray-300 rounded px-2 py-1 mb-2"></textarea>
 
-                <button type="submit">Създаване на тема</button>
+                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Създаване на тема</button>
             </form>
             <div>
-                <h3>Теми</h3>
+                <h3 className="text-xl font-bold mb-4">Теми</h3>
                 {posts.length > 0 ? (
                     <ul>
                         {posts.map((post, index) => (
-                            <li key={index}>
-                                <h4>{post.title}</h4>
+                            <li key={index} className="border border-gray-300 rounded p-4 mb-4">
+                                <h4 className="text-lg font-bold mb-2">{post.title}</h4>
                                 <p>{post.content}</p>
                                 <p>Публикувано от: {post.user}</p>
                                 <p>Създадена на:{post.createdAt}</p>
-                                <button onClick={() => handleLike(index)}>Like</button>
-                                <button onClick={() => handleDislike(index)}>Dislike</button>
+                                <button onClick={() => handleLike(index)} className="bg-green-500 text-white px-2 py-1 rounded mr-2">Like</button>
+                                <button onClick={() => handleDislike(index)} className="bg-red-500 text-white px-2 py-1 rounded">Dislike</button>
                                 <p>Likes: {post.likes}</p>
                                 <p>Dislikes: {post.dislikes}</p>
                             </li>
@@ -103,7 +103,7 @@ const CreatePost = () => {
 };
 
 export default CreatePost;
-                    likes: 0,
+                  /*   likes: 0,
                     dislikes: 0
                 });
                 setTitle('');
@@ -172,4 +172,4 @@ export default CreatePost;
     );
 };
 
-export default CreatePost;
+export default CreatePost; */

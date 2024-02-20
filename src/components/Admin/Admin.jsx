@@ -42,7 +42,7 @@ const Admin = () => {
 
   return (
     <div className="admin-content">
-      <div className="admin-header">
+      <div className="admin-header flex justify-center space-x-4">
         <Button onClick={() => setPage(1)}>Users</Button>
         <Button onClick={() => setPage(2)}>Blocked Users</Button>
         <Button onClick={() => setPage(3)}>Posts</Button>
@@ -50,8 +50,8 @@ const Admin = () => {
       <div className="admin-main">
         {page === 1 && (
           <div className="admin-page">
-            <h1>Users:</h1>
-            <table>
+            <h1 className="text-2xl font-bold mb-4">Users:</h1>
+            <table className="w-full">
               <thead>
                 <tr>
                   <th>Username</th>
@@ -76,8 +76,8 @@ const Admin = () => {
         )}
         {page === 2 && (
           <div className="admin-page">
-            <h1>Blocked Users:</h1>
-            <table>
+            <h1 className="text-2xl font-bold mb-4">Blocked Users:</h1>
+            <table className="w-full">
               <thead>
                 <tr>
                   <th>Username</th>
@@ -101,8 +101,8 @@ const Admin = () => {
         )}
         {page === 3 && (
           <div className="admin-page">
-            <h1>Posts:</h1>
-            <table>
+            <h1 className="text-2xl font-bold mb-4">Posts:</h1>
+            <table className="w-full">
               <thead>
                 <tr>
                   <th>Title</th>
@@ -132,6 +132,5 @@ const Admin = () => {
       <div className="admin-footer"></div>
     </div>
   );
-};
-
+ }
 export default Admin;

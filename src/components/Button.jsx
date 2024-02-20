@@ -10,7 +10,7 @@ export default function Button({ children = null, onClick = () => {} }) {
     <>
       <button
         onClick={onClick}
-        style={{ cursor: "pointer" }} // Add this line
+        className="bg-yellow-500 hover:bg-green-700 text-black font-bold py-1 px-3 rounded transition duration-300 ease-in-out" // Add this line
       >
         {children}
       </button>

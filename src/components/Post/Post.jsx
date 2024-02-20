@@ -41,28 +41,34 @@ export default function Post({ post }) {
   };
 
   return (
-    <div className="post">
-      <h4>
+    <div className="bg-red-700 p-4 rounded-lg shadow-md mb-5 ml-5 mr-5">
+      <h4 className="text-xl font-bold mb-5">
         {post.title}{" "}
         {userData ? (
           liked ? (
-            <Button onClick={toggleDislike}>Не харесвам</Button>
+            <Button  onClick={toggleDislike}>Не харесвам</Button>
           ) : (
             <Button onClick={toggleLike}>Харесвам</Button>
           )
         ) : null}
       </h4>
-      <p>{post.content}</p>
-      <p>
-        Създаден от {userData?.firstName} {userData?.lastName}
+      <p className="text-black-700">{post.content}</p>
+      <p className="text-black-500">
+        Създаден от {post?.author} {userData?.lastName}
       </p>
-      <p>{new Date(post.createdOn).toLocaleDateString("bg-BG")}</p>
-      <p>Likes: {likeCount}</p> {/* Display the like count */}
-      <Button onClick={() => navigate(`/posts/${post.id}`)}>
+      <p className="text--500">
+        {new Date(post.createdOn).toLocaleDateString("bg-BG")}
+      </p>
+      <p className="text-black-500">Likes: {likeCount}</p> {/* Display the like count */}
+      <Button
+        onClick={() => navigate(`/posts/${post.id}`)}
+        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+      >
         Прегледай и Коментирай
       </Button>
     </div>
   );
+  
 }
 
 Post.propTypes = {

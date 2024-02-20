@@ -12,7 +12,6 @@ import { getUserByHandle } from "../services/users.service";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import Button from "../components/Button";
-import "./SinglePost.css";
 
 export default function SinglePost() {
   const [post, setPost] = useState(null);
@@ -78,42 +77,47 @@ export default function SinglePost() {
   };
 
   return (
-    <div>
-      <h1>Публикация</h1>
-      <div className="post">
-        <div className="single-post-header">
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Публикация</h1>
+      <div className="bg-white rounded-lg shadow-lg p-4">
+        <div className="flex justify-between items-center mb-4">
           <span>{post?.createdOn}</span>
           <span>{likeCount} харесвания</span>
         </div>
-        <div className="single-post-content">
-          <div id="single-post-left-side">
+        <div className="flex">
+          <div className="mr-4">
             <h3>{post?.author}</h3>
-            <div id="author-first-and-last-name">
+            <div className="flex items-center mb-2">
               <span>{author?.firstName || "firstName"}</span>
+              <span className="mx-2">|</span>
               <span>{author?.lastName || "lastName"}</span>
             </div>
             <span>
               {(author?.posts && Object.keys(author.posts).length) || 0} публикации
             </span>
+            <span className="mx-2">|</span>
             <span>{likeCount || 0} харесвания</span>
+            <span className="mx-2">|</span>
             <span>{author?.comments || 0} коментара</span>
-            <span></span>
           </div>
-          <div id="single-post-right-side">
-            <span>{post?.title}</span>
-            <hr />
+          <div>
+            <span className="text-xl font-bold">{post?.title}</span>
+            <hr className="my-2" />
             <span>{post?.content}</span>
           </div>
         </div>
-        <div className="single-post-footer">
+        <div className="flex justify-between items-center mt-4">
           {addComment ? (
-            <div>
+            <div className="flex">
               <input
                 type="text"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
+                className="border border-gray-300 rounded-l px-2 py-1 focus:outline-none"
               />
-              <Button onClick={handleAddComment}>Добави коментар</Button>
+              <Button onClick={handleAddComment} className="rounded-r">
+                Добави коментар
+              </Button>
             </div>
           ) : (
             <Button onClick={() => setAddComment(true)}>Коментирай публикацията</Button>
@@ -126,21 +130,20 @@ export default function SinglePost() {
         </div>
       </div>
       {comments && (
-        <div id="single-post-comments">
-          <h3>Коментари</h3>
+        <div className="mt-4">
+          <h3 className="text-xl font-bold">Коментари</h3>
           {Object.keys(comments).map((key) => (
-            <>
-            <div key={key} className="comment">
+            <div key={key} className="bg-white rounded-lg shadow-lg p-4 mt-4">
               <span>{comments[key].firstName}</span>
+              <span className="mx-2">|</span>
               <span>{comments[key].lastName}</span>
+              <span className="mx-2">|</span>
               <span>{comments[key].createdOn}</span>
-              <span>{comments[key].content}</span>
+              <p className="mt-2">{comments[key].content}</p>
               {comments[key].handle === userData?.handle && (
                 <Button onClick={() => handleDeleteComment(key)}>Изтрии публикацията</Button>
               )}
             </div>
-            <hr />
-            </>
           ))}
         </div>
       )}
