@@ -27,12 +27,12 @@ export default function CreatePost() {
       return setError("Блокирани потребители не могат да създават постове!");
     }
 
-    if (post.title.length < 16 || post.title.length > 64) {
+    if (post.title.length < 16 || post.title.length >= 64) {
       return setError(
         "Заглавието трябва да бъде с дължина между 16 и 64 символа!"
       );
     }
-    if (post.content.length < 10 || post.content.length > 8192) {
+    if (post.content.length < 32 || post.content.length >= 8192) {
       return setError(
         "Съдържанието трябва да бъде с дължина между 32 и 8192 символа!"
       );
