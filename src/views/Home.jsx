@@ -4,7 +4,6 @@ import Post from "../components/Post/Post";
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
-    console.log(posts);
     useEffect(() => {
         getAllPosts().then(setPosts);
     }, []);
@@ -16,7 +15,7 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Най-харесвани</h1>
+            <h1>Начало</h1>
             {sortedPosts.map((post) => (
                 <Post key={post.id} post={post} />
             ))}
