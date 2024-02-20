@@ -28,6 +28,7 @@ import OthersCategory from "./views/Categories/OthersCategory";
 import SearchResults from "./views/SearchedItems";
 import MyPosts from "./views/MyPosts";
 import Home from "./views/Home";
+import MyComments from "./views/MyComments";
 
 function App() {
   const [context, setContext] = useState({
@@ -100,6 +101,7 @@ function App() {
           <Route path="/others-category" element={<OthersCategory />} />
           <Route path="/search/:term" element={<SearchResults />} />
           <Route path="/my-posts" element={<MyPosts />} />
+          <Route path="/my-comments" element={<MyComments />} />
         </Routes>
         <Footer />
       </AppContext.Provider>
