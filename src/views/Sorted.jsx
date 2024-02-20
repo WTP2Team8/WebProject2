@@ -6,6 +6,7 @@ const Sorted = () => {
   const { userData } = useContext(AppContext);
   const [sortOrder, setSortOrder] = useState("desc");
   const [posts, setPosts] = useState([]);
+  console.log(userData);
 
   useEffect(() => {
     getAllPosts().then(setPosts);
@@ -36,8 +37,8 @@ const Sorted = () => {
           onChange={handleSort}
           className="mb-4 p-2 rounded border border-gray-300"
         >
-          <option value="desc">Newest to Oldest</option>
-          <option value="asc">Oldest to Newest</option>
+          <option value="desc">Нови към Стари</option>
+          <option value="asc">Стари към Нови</option>
         </select>
       ) : null}
       <div className="grid grid-cols-10 gap-4 sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-3">

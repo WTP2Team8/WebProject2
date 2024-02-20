@@ -4,7 +4,7 @@
   background-color: #4f922b; /* Set the background color */
   padding: 10px; /* Adjust the padding as needed */
   width: 100%;
-  background: #c08911;
+  background: #ffffff;
   box-shadow: 2px 2px 10px #aaa;
   left: 0;
   height: 80px;
@@ -16,7 +16,7 @@
 }
 
 .ladle {
-  width: 170px;
+  width: 205px;
   height: 65px;
   margin-left: 25px;
 }
@@ -55,14 +55,14 @@
 .nav-item a,
 .nav-item span {
   text-decoration: none;
-  color: rgb(169, 52, 52);
+  color: #790016;
   font-weight: bold;
   font-size: 20px;
 }
 
 .nav-item a:hover,
 .nav-item span:hover {
-  color: #ffcc00; /* Set the text color on hover */
+  color: #FFBE58
 }
 
 .dropdown-menu {
@@ -89,7 +89,7 @@
 
 .category-link:hover,
 .profile-link:hover {
-  color: #ffcc00;
+  color: #00ff5e;
 }
 
 .search-bar {
@@ -98,4 +98,3 @@
   justify-content: center;
   align-items: flex-end; /* Change align-items to flex-end */
 }
-

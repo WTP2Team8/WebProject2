@@ -28,6 +28,7 @@ import OthersCategory from "./views/Categories/OthersCategory";
 import SearchResults from "./views/SearchedItems";
 import MyPosts from "./views/MyPosts";
 import Home from "./views/Home";
+import Favorites from "./views/Favorites";
 
 function App() {
   const [context, setContext] = useState({
@@ -69,7 +70,7 @@ function App() {
         <Routes>
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/trending" element={<Trending />} />
-            <Route path="/posts" element={<AllPosts />} />
+          <Route path="/posts" element={<AllPosts />} />
           <Route
             path="/posts/:id"
             element={
@@ -87,6 +88,7 @@ function App() {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/favorites" element={<Favorites />} />
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
