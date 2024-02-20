@@ -30,24 +30,30 @@ const Sorted = () => {
   });
 
   return (
-    <div className="p-4">
+    
+    <div className="flex flex-col items-center"> {/* Added 'items-center' class */}
+    <div>
+              <img className="w-80 h-80" src="https://cdn.pazaruvai-lesno.bg/media/catalog/product/cache/d791de03504d1e397ac2dbb1583dacc3/1/9/19525.jpg" alt="черпачето" />
+            </div>
       {userData?.handle ? (
         <select
           value={sortOrder}
           onChange={handleSort}
-          className="mb-4 p-2 rounded border border-gray-300"
+          className="mb-7 p-2 rounded border border-black-500"
         >
           <option value="desc">Нови към Стари</option>
           <option value="asc">Стари към Нови</option>
         </select>
       ) : null}
-      <div className="grid grid-cols-10 gap-4 sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-3">
+      <div>
         {sortedData.map((item) => (
           <div key={item?.id}>
             <Post post={item} />
+           
           </div>
         ))}
       </div>
+      
     </div>
   );
 };
