@@ -54,7 +54,7 @@ export default function Post({ post }) {
       </h4>
       <p className="text-black-700">{post.content}</p>
       <p className="text-black-500">
-        Създаден от {post?.author} {userData?.lastName}
+        Създаден от {post?.author}
       </p>
       <p className="text--500">
         {new Date(post.createdOn).toLocaleDateString("bg-BG")}

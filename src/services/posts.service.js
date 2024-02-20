@@ -76,16 +76,15 @@ import {
 import { db } from "../config/firebase-config";
 import { updateUserPosts } from "./users.service";
 
-export const addPost = async (author, title, content, category) => {
+export const addPost = async (author, title, content) => {
   const result = await push(ref(db, "posts"), {
     author,
     title,
     content,
-    category,
+    // createdOn: Date.now(),
     createdOn: new Date().toString(),
     comments: {},
     likes: 0,
-    likedBy: [] // Add the likedBy property as an empty array
   });
 
   await updateUserPosts(author, result.key, title);

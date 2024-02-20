@@ -4,7 +4,7 @@ import Post from "../../components/Post/Post";
 
 const SoupsCategory = () => {
     const [posts, setPosts] = useState([]);
-    const soupPosts = posts.filter((post) => post.category === "soup-category");
+    const soupPosts = posts.filter((post) => post.category === "soups-category");
 
     useEffect(() => {
         const fetchPosts = async () => {
