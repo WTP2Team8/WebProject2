@@ -20,7 +20,7 @@ export default function Post({ post }) {
 
   useEffect(() => {
     if (post?.id) {
-      getLikedByValue(post.id).then(likedBy => {
+      getLikedByValue(post.id).then((likedBy) => {
         setLikeCount(likedBy.length);
       });
     }
@@ -44,17 +44,23 @@ export default function Post({ post }) {
     <div className="post">
       <h4>
         {post.title}{" "}
-        {liked ? (
-          <Button onClick={toggleDislike}>Нехаресвам</Button>
-        ) : (
-          <Button onClick={toggleLike}>Харесвам</Button>
-        )}
+        {userData ? (
+          liked ? (
+            <Button onClick={toggleDislike}>Не харесвам</Button>
+          ) : (
+            <Button onClick={toggleLike}>Харесвам</Button>
+          )
+        ) : null}
       </h4>
       <p>{post.content}</p>
-      <p>Създаден от {userData.firstName} { userData.lastName}</p>
+      <p>
+        Създаден от {userData?.firstName} {userData?.lastName}
+      </p>
       <p>{new Date(post.createdOn).toLocaleDateString("bg-BG")}</p>
       <p>Likes: {likeCount}</p> {/* Display the like count */}
-      <Button onClick={() => navigate(`/posts/${post.id}`)}>Прегледай и Коментирай</Button>
+      <Button onClick={() => navigate(`/posts/${post.id}`)}>
+        Прегледай и Коментирай
+      </Button>
     </div>
   );
 }
@@ -65,7 +71,7 @@ Post.propTypes = {
     author: PropTypes.string,
     title: PropTypes.string,
     content: PropTypes.string,
-    createdOn: PropTypes.string
+    createdOn: PropTypes.string,
   }),
   togglePostLike: PropTypes.func,
 };

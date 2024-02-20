@@ -27,6 +27,7 @@ import DesertsCategory from "./views/Categories/DesertsCategory";
 import OthersCategory from "./views/Categories/OthersCategory";
 import SearchResults from "./views/SearchedItems";
 import MyPosts from "./views/MyPosts";
+import Home from "./views/Home";
 
 function App() {
   const [context, setContext] = useState({
@@ -61,54 +62,55 @@ function App() {
 
   return (
     // <div im>
-      <BrowserRouter>
-        <AppContext.Provider value={{ ...context, setContext }}>
-          <Navbar />
-          <Header />
-          <Routes>
-            <Route path="/contacts" element={<Contacts />} />
-            <Route path="/trending" element={<Trending />} />
-            <Route
-              path="/posts"
-              element={
-                <Authenticated>
-                  <AllPosts />
-                </Authenticated>
-              }
-            />
-            <Route
-              path="/posts/:id"
-              element={
-                <Authenticated>
-                  <SinglePost />
-                </Authenticated>
-              }
-            />
-            <Route
-              path="/posts-create"
-              element={
-                <Authenticated>
-                  <CreatePost />
-                </Authenticated>
-              }
-            />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />}></Route>
-            <Route path="/admin" element={<Admin />}></Route>
-            <Route path="/profile" element={<Profile />}></Route>
-            <Route path="*" element={<NotFound />} />
-            <Route path="/meat-category" element={<MeatCategory />} />
-            <Route path="/vegeterian-category" element={<VegeterianCategory />} />
-            <Route path= "/salads-category" element={<SaladsCategory />} />
-            <Route path="/soups-category" element={<SoupsCategory />} />
-            <Route path="/deserts-category" element={<DesertsCategory />} />
-            <Route path="/others-category" element={<OthersCategory />} />
-            <Route path="/search/:term" element={<SearchResults />} />
-            <Route path="/my-posts" element={<MyPosts />} />
-          </Routes>
-          <Footer />
-        </AppContext.Provider>
-      </BrowserRouter>
+    <BrowserRouter>
+      <AppContext.Provider value={{ ...context, setContext }}>
+        <Navbar />
+        <Header />
+        <Routes>
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/trending" element={<Trending />} />
+          <Route
+            path="/posts"
+            element={
+              <Authenticated>
+                <AllPosts />
+              </Authenticated>
+            }
+          />
+          <Route
+            path="/posts/:id"
+            element={
+              <Authenticated>
+                <SinglePost />
+              </Authenticated>
+            }
+          />
+          <Route
+            path="/posts-create"
+            element={
+              <Authenticated>
+                <CreatePost />
+              </Authenticated>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
+          <Route path="*" element={<NotFound />} />
+          <Route path="/meat-category" element={<MeatCategory />} />
+          <Route path="/vegeterian-category" element={<VegeterianCategory />} />
+          <Route path="/salads-category" element={<SaladsCategory />} />
+          <Route path="/soups-category" element={<SoupsCategory />} />
+          <Route path="/deserts-category" element={<DesertsCategory />} />
+          <Route path="/others-category" element={<OthersCategory />} />
+          <Route path="/search/:term" element={<SearchResults />} />
+          <Route path="/my-posts" element={<MyPosts />} />
+        </Routes>
+        <Footer />
+      </AppContext.Provider>
+    </BrowserRouter>
     // </div>
   );
 }
