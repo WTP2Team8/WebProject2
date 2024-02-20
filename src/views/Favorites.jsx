@@ -1,35 +1,34 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
+import { getAllPosts } from "../services/posts.service";
+import Post from "../components/Post/Post";
 
 const Favorites = () => {
   const { user, userData } = useContext(AppContext);
   const [favorites, setFavorites] = useState(null);
   console.log(userData?.likedPosts);
 
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
-    if (userData) {
-      const favorites = userData.favorites;
-      if (favorites) {
-        const favs = Object.keys(favorites).map((key) => {
-          return favorites[key];
-        });
-        setFavorites(favs);
-      }
-    }
-  }, [userData]);
+    getAllPosts().then(setPosts);
+  }, []);
+
+  useEffect(() => {
+    const likedPostKeys = Object.keys(userData?.likedPosts || {});
+    const filteredPosts = posts.filter((post) =>
+      likedPostKeys.includes(post.id)
+    );
+    setFavorites(filteredPosts);
+  }, [userData?.likedPosts, posts]);
 
   return (
     <div>
-      <h1>Любими</h1>
       {favorites &&
-        favorites.map((favorite) => {
-          return (
-            <div key={favorite.id}>
-              <h2>{favorite.id}</h2>
-              <p>{favorite.likedPosts}</p>
-            </div>
-          );
-        })}
+        favorites.map((post) => (
+          <div key={post.id}>
+            <Post key={post.id} post={post} />
+          </div>
+        ))}
     </div>
   );
 };
