@@ -48,7 +48,7 @@ export default function Post({ post }) {
           liked ? (
             <Button onClick={toggleDislike}>Не харесвам</Button>
           ) : (
-            <Button onClick={toggleLike}>Харесвам</Button>
+            <Button className="me-auto" onClick={toggleLike}>Харесвам</Button>
           )
         ) : null}
       </h4>
