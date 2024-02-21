@@ -62,7 +62,7 @@ export default function CreatePost() {
 
   return (
     <section className="createPostField">
-      <h1 className="text-2xl font-bold mb-4">Нова Публикация във Форума</h1>
+      <h1 className="text-2xl text-center font-bold mb-4">Нова Публикация във Форума</h1>
 
       {error && (
         <div id="error" className="text-red-500 mb-2">
