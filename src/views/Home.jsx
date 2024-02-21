@@ -18,8 +18,11 @@ const Home = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <p>Регистрирани потребители: {users.length}</p>
-      <p>Брой на всички постове: {posts.length}</p>
+      <p className="text-1xl font-bold mb-4">
+        Регистрирани потребители: {users.length}
+      </p>
+      <p className="text-1xl font-bold mb-4">
+        Брой на всички постове: {posts.length}</p>
       <h1 className="text-2xl font-bold mb-4 flex justify-center items-center">
         Начало
       </h1>

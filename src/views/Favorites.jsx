@@ -5,8 +5,7 @@ import Post from "../components/Post/Post";
 
 const Favorites = () => {
   const { userData } = useContext(AppContext);
-  const [favorites, setFavorites] = useState(null);
-  console.log(userData?.likedPosts);
+  const [favorites, setFavorites] = useState([]);
 
   const [posts, setPosts] = useState([]);
   useEffect(() => {
@@ -23,12 +22,14 @@ const Favorites = () => {
 
   return (
     <div>
-      {favorites &&
-        favorites.map((post) => (
-          <div key={post.id}>
-            <Post key={post.id} post={post} />
-          </div>
-        ))}
+        <h1 className="text-2xl font-bold mb-4 flex justify-center items-center">
+        Любими
+      </h1>
+      {favorites.map((post) => (
+        <div key={post.id}>
+          <Post key={post.id} post={post} />
+        </div>
+      ))}
     </div>
   );
 };

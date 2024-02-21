@@ -34,7 +34,7 @@ const Admin = () => {
   };
 
   const handleDeletePost = (postId) => {
-    deletePost(postId)
+    deletePost(postId);
   };
 
   const changeAdminStatus = (userHandle) => {
@@ -67,7 +67,7 @@ const Admin = () => {
                 {users?.map((user) => (
                   <UserView
                     key={user.id}
-                    text={"Block"}
+                    text={"Блокирай"}
                     user={user}
                     handleBlock={handleBlock}
                     changeAdminStatus={changeAdminStatus}
@@ -93,7 +93,7 @@ const Admin = () => {
                 {blockedUsers?.map((user) => (
                   <UserView
                     key={user.id}
-                    text={"Unblock"}
+                    text={"Отблокирай"}
                     user={user}
                     handleBlock={handleUnblock}
                   />
