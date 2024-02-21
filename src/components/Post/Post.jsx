@@ -59,7 +59,7 @@ export default function Post({ post }) {
       <p className="text--500">
         {new Date(post.createdOn).toLocaleDateString("bg-BG")}
       </p>
-      <p className="text-black-500">Likes: {likeCount}</p>{" "}
+      <p className="text-black-500">Харесвания: {likeCount}</p>{" "}
       {/* Display the like count */}
       <Button
         onClick={() => navigate(`/posts/${post.id}`)}
