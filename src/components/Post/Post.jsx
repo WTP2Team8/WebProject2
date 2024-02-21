@@ -7,6 +7,7 @@ import { AppContext } from "../../context/AppContext";
 import { dislikePost, likePost } from "../../services/posts.service";
 import { db } from "../../config/firebase-config";
 import { get, ref } from "firebase/database";
+import { deletePost } from "../../services/posts.service";
 
 /**
  *
@@ -67,6 +68,11 @@ export default function Post({ post }) {
       >
         Прегледай и Коментирай
       </Button>
+      {post.author === userData.handle && (
+        <Button onClick={() => deletePost(post.id)}>
+          Изтрии публикацията
+        </Button>
+      )}
     </div>
   );
 }
