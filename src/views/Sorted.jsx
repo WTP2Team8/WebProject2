@@ -38,7 +38,7 @@ const Sorted = () => {
         <select
           value={sortOrder}
           onChange={handleSort}
-          className="mb-7 p-2 rounded border border-black-500"
+          className="mb-7 py-2 bg-orange-700 text-yellow-500 font-bold px-11 rounded border border-black-500"
         >
           <option value="desc">Нови към Стари</option>
           <option value="asc">Стари към Нови</option>
