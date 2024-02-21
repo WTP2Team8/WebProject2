@@ -16,8 +16,8 @@ export default function VegeterianCategory() {
     }, []);
 
     return (
-        <div >
-            <div>
+        <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {vegeterianPosts.map((post) => (
                     <Post key={post.id} post={post} />
                 ))}

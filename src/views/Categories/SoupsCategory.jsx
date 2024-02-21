@@ -16,11 +16,13 @@ const SoupsCategory = () => {
     }, []);
 
     return (
-        <div>
-            <div>
-                {soupPosts.map((post) => (
-                    <Post key={post.id} post={post} />
-                ))}
+        <div className="bg-gray-100 py-8">
+            <div className="container mx-auto">
+                <div>
+                    {soupPosts.map((post) => (
+                        <Post key={post.id} post={post} />
+                    ))}
+                </div>
             </div>
         </div>
     );

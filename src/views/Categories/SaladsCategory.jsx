@@ -19,20 +19,11 @@ export default function SaladsCategory() {
 
   return (
     <div>
-      <h1
-        style={{
-          fontFamily: "Open Sans, Open Sans-fallback, sans-serif",
-          boxSizing: "border-box",
-          margin: 0,
-          padding: 0,
-          textAlign: "center",
-          color: "black",
-          borde: "20px solid #FFBE54",
-        }}
-      >
+      <h1 className="font-sans font-bold text-2xl my-5 py-2 text-black rounded-lg">
+        Салати
       </h1>
 
-      <div>
+      <div className="grid grid-cols-1 gap-4">
         {saladsPosts.map((post) => (
           <Post key={post.id} post={post} />
         ))}
