@@ -2,8 +2,8 @@ import './Footer.css';
 
 export default function Footer() {
   return (
-    <footer>
-      <p>Footer</p>
+    <footer >
+      <p>Telerik 2024</p>
     </footer>
   );
 }

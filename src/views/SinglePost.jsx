@@ -145,7 +145,7 @@ export default function SinglePost() {
         <div className="mt-4">
           <h3 className="text-xl font-bold">Коментари</h3>
           {Object.keys(comments).map((key) => (
-            <div key={key} className="bg-white rounded-lg shadow-lg p-4 mt-4">
+            <div key={key} className="bg-yellow-600 rounded-lg shadow-lg p-4 mt-4">
               <span>{comments[key].firstName}</span>
               <span className="mx-2">|</span>
               <span>{comments[key].lastName}</span>

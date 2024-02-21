@@ -1,14 +1,6 @@
 footer {
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    height: 2px;
-    width: 100%;
-    position: fixed; /* Changed from absolute to fixed */
-    bottom: 0;
-    background-image: url(/images/cloth.jpg);
+ background-color: rgb(154, 52, 18);
+ color: rgb(234, 179, 8);
+ padding: 10px;
+ text-align: center;
 }
