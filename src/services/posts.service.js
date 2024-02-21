@@ -11,12 +11,13 @@ import {
 import { db } from "../config/firebase-config";
 import { updateUserPosts } from "./users.service";
 
-export const addPost = async (author, title, content) => {
+export const addPost = async (author, title, content, category) => {
   const result = await push(ref(db, "posts"), {
     author,
     title,
     content,
-    createdOn: Date.now().toString(),
+    category,
+    createdOn: Date.now(),
     comments: {},
     likes: 0,
   });

@@ -16,16 +16,18 @@ const SoupsCategory = () => {
     }, []);
 
     return (
-        <div className="bg-gray-100 py-8 bg-yellow-700">
-            <div className="container mx-auto">
-                <div>
-                    {soupPosts.map((post) => (
-                        <Post key={post.id} post={post} />
-                    ))}
-                </div>
-            </div>
+        <div>
+          <h1 className="font-sans font-bold text-2xl my-5 py-2 text-black rounded-lg">
+            Супи
+          </h1>
+    
+          <div className="grid grid-cols-1 gap-4">
+            {soupPosts.map((post) => (
+              <Post key={post.id} post={post} />
+            ))}
+          </div>
         </div>
-    );
+      );
 };
 
 export default SoupsCategory;

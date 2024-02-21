@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import {
   addCommentPost,
@@ -7,11 +7,11 @@ import {
   getCommentsOfAPost,
   getPostById,
   likePost,
+  deletePost,
 } from "../services/posts.service";
 import { getUserByHandle } from "../services/users.service";
-import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
 import Button from "../components/Button";
+import { AppContext } from "../context/AppContext";
 
 export default function SinglePost() {
   const [post, setPost] = useState(null);
@@ -25,21 +25,26 @@ export default function SinglePost() {
   const { userData } = useContext(AppContext);
 
   useEffect(() => {
-    getPostById(id).then((post) => {
-      setPost(post);
-      console.log(id);
-      getCommentsOfAPost(id).then(setComments);
-      setLikeCount(post.likedBy.length || 0);
-    });
+    getPostData();
   }, [id]);
 
   useEffect(() => {
-    getUserByHandle(post?.author).then((snapshot) => {
-      if (snapshot.exists()) {
-        setAuthor(snapshot.val());
-      }
-    });
+    if (post?.author) {
+      getUserByHandle(post.author).then((snapshot) => {
+        if (snapshot.exists()) {
+          setAuthor(snapshot.val());
+        }
+      });
+    }
   }, [post?.author]);
+
+  const getPostData = async () => {
+    const postData = await getPostById(id);
+    setPost(postData);
+    setLikeCount(postData?.likedBy?.length || 0);
+    const commentsData = await getCommentsOfAPost(id);
+    setComments(commentsData);
+  };
 
   const toggleLike = () => {
     likePost(userData.handle, post.id).then(() => {
@@ -66,8 +71,8 @@ export default function SinglePost() {
       .then(() => {
         setComment("");
         setAddComment(false);
-      })
-      .then(() => getCommentsOfAPost(id).then(setComments));
+        getCommentsOfAPost(id).then(setComments);
+      });
   };
 
   const handleDeleteComment = (commentId) => {
@@ -79,31 +84,33 @@ export default function SinglePost() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Публикация</h1>
-      <div className="bg-orange rounded-lg shadow-lg p-4">
+      <div className="bg-white rounded-lg shadow-lg p-4">
         <div className="flex justify-between items-center mb-4">
           <span>{post?.createdOn}</span>
           <span>{likeCount} харесвания</span>
         </div>
         <div className="flex">
           <div className="mr-4">
-            <h3>{post?.author}</h3>
-            <div className="flex items-center mb-2">
-              <span>{author?.firstName || "firstName"}</span>
+            <div className="mr-4">
+              <h3>{post?.author}</h3>
+              <div className="flex items-center mb-2">
+                <span>{author?.firstName || "firstName"}</span>
+                <span className="mx-2">|</span>
+                <span>{author?.lastName || "lastName"}</span>
+              </div>
+              <span>
+                {(author?.posts && Object.keys(author.posts).length) || 0} публикации
+              </span>
               <span className="mx-2">|</span>
-              <span>{author?.lastName || "lastName"}</span>
+              <span>{likeCount || 0} харесвания</span>
+              <span className="mx-2">|</span>
+              <span>{author?.comments || 0} коментара</span>
             </div>
-            <span>
-              {(author?.posts && Object.keys(author.posts).length) || 0} публикации
-            </span>
-            <span className="mx-2">|</span>
-            <span>{likeCount || 0} харесвания</span>
-            <span className="mx-2">|</span>
-            <span>{author?.comments || 0} коментара</span>
-          </div>
-          <div>
-            <span className="text-xl font-bold">{post?.title}</span>
-            <hr className="my-2" />
-            <span>{post?.content}</span>
+            <div>
+              <span className="text-xl font-bold">{post?.title}</span>
+              <hr className="my-2" />
+              <span>{post?.content}</span>
+            </div>
           </div>
         </div>
         <div className="flex justify-between items-center mt-4">
@@ -122,13 +129,23 @@ export default function SinglePost() {
           ) : (
             <Button onClick={() => setAddComment(true)}>Коментирай публикацията</Button>
           )}
+          {post?.author === userData?.handle && (
+            <Button onClick={() => deletePost(post.id)}>
+              Изтрии публикацията
+            </Button>
+          )}
+          {liked ? (
+            <Button onClick={toggleDislike}>Нехаресвам</Button>
+          ) : (
+            <Button onClick={toggleLike}>Харесвам</Button>
+          )}
         </div>
       </div>
       {comments && (
         <div className="mt-4">
           <h3 className="text-xl font-bold">Коментари</h3>
           {Object.keys(comments).map((key) => (
-            <div key={key} className="bg-green-700 rounded-lg shadow-lg p-4 mt-4">
+            <div key={key} className="bg-white rounded-lg shadow-lg p-4 mt-4">
               <span>{comments[key].firstName}</span>
               <span className="mx-2">|</span>
               <span>{comments[key].lastName}</span>
@@ -136,7 +153,7 @@ export default function SinglePost() {
               <span>{comments[key].createdOn}</span>
               <p className="mt-2">{comments[key].content}</p>
               {comments[key].handle === userData?.handle && (
-                <Button onClick={() => handleDeleteComment(key)}>Изтрии публикацията</Button>
+                <Button onClick={() => handleDeleteComment(key)}>Изтрии коментара</Button>
               )}
             </div>
           ))}
