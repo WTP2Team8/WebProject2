@@ -50,13 +50,13 @@ export default function Header() {
         <>
           <NavLink
             to="/register"
-            className="mr-4 text-blue-500 hover:text-blue-700"
+            className="mr-4 text-yellow-500"
           >
             Регистрация
           </NavLink>
           <NavLink
             to="/login"
-            className="mr-4 text-blue-500 hover:text-blue-700"
+            className="mr-4 text-yellow-500"
           >
             Вход
           </NavLink>

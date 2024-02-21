@@ -5,9 +5,9 @@ export default function Contacts() {
   };
 
   return (
-    <div className="container mt-auto mx-auto px-4 py-8">
+    <div className="container mt-auto mx-auto px-4 py-8 text-yellow-500">
       <h1 className="text-3xl font-bold mb-8 text-center ">Контакти</h1>
-      <div className="bg-orange-700 p-11 rounded-lg">
+      <div className="bg-orange-800 p-11 rounded-lg">
         <p className="mb-2 text-center text-base">Автори: Антония Асенова, Станислав Христов, Радослав Костадинов</p>
         <p className="mb-2 text-center">Държава: България</p>
         <p className="mb-2 text-center">Година: 2024</p>

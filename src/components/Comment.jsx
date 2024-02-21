@@ -4,7 +4,7 @@ import Button from "./Button";
 
 export default function Comment({ comment, postId }) {
     return (
-        <div className="bg-red-700 rounded-lg shadow-lg p-4 mt-4">
+        <div className="bg-amber-500 rounded-lg shadow-lg p-4 mt-4">
             <span>{comment.firstName}</span>
             <span className="mx-2">|</span>
             <span>{comment.lastName}</span>
