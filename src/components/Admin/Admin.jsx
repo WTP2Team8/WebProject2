@@ -34,7 +34,7 @@ const Admin = () => {
   };
 
   const handleDeletePost = (postId) => {
-    deletePost(postId).then(() => setBlocked(!blocked));
+    deletePost(postId)
   };
 
   const changeAdminStatus = (userHandle) => {

@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-
+import { deletePost } from '../services/posts.service';
 import { useState, useEffect } from 'react';
 import { getDocs, collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../config/firebase-config';
 import { getAuth } from 'firebase/auth';
+import { AppContext } from '../context/AppContext';
+import Button from '../components/Button';
 
 const CreatePost = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [posts, setPosts] = useState([]);
+    const[userData]=useState(AppContext);
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -88,6 +91,7 @@ const CreatePost = () => {
                                 <p>{post.content}</p>
                                 <p>Публикувано от: {post.user}</p>
                                 <p>Създадена на:{post.createdAt}</p>
+                               
                                 <button onClick={() => handleLike(index)} className="bg-green-500 text-white px-2 py-1 rounded mr-2">Like</button>
                                 <button onClick={() => handleDislike(index)} className="bg-red-500 text-white px-2 py-1 rounded">Не харесвам</button>
                                 <p>Харесвания: {post.likes}</p>
@@ -104,73 +108,73 @@ const CreatePost = () => {
 };
 
 export default CreatePost;
-                  /*   likes: 0,
-                    dislikes: 0
-                });
-                setTitle('');
-                setContent('');
-                fetchPosts();
-            } catch (error) {
-                console.error("Error adding document: ", error);
-            }
-        } else {
-            console.log("No user logged in");
-        
-        }
-    };
-    
+/*   likes: 0,
+  dislikes: 0
+});
+setTitle('');
+setContent('');
+fetchPosts();
+} catch (error) {
+console.error("Error adding document: ", error);
+}
+} else {
+console.log("No user logged in");
+ 
+}
+};
+ 
 
-    const handleLike = (index) => {
-        const updatedPosts = [...posts];
-        updatedPosts[index].likes += 1;
-        setPosts(updatedPosts);
-    };
+const handleLike = (index) => {
+const updatedPosts = [...posts];
+updatedPosts[index].likes += 1;
+setPosts(updatedPosts);
+};
 
-    const handleDislike = (index) => {
-        const updatedPosts = [...posts];
-        updatedPosts[index].dislikes += 1;
-        setPosts(updatedPosts);
-    };
+const handleDislike = (index) => {
+const updatedPosts = [...posts];
+updatedPosts[index].dislikes += 1;
+setPosts(updatedPosts);
+};
 
-    return (
-        <div>
-            <h2>Създай публикация</h2>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Заглавие</label>
-                <input type="text" id="title" value={title} onChange={handleTitleChange} />
+return (
+<div>
+<h2>Създай публикация</h2>
+<form onSubmit={handleSubmit}>
+<label htmlFor="title">Заглавие</label>
+<input type="text" id="title" value={title} onChange={handleTitleChange} />
 
-                <label htmlFor="content">Съдържание:</label>
-                <textarea id="content" value={content} onChange={handleContentChange} />
+<label htmlFor="content">Съдържание:</label>
+<textarea id="content" value={content} onChange={handleContentChange} />
 
-                <button type="submit">Създаване на тема</button>
-            </form>
-            <div>
-                <h3>Теми</h3>
-                {posts.length > 0 ? (
-                    <ul>
-                        {posts.map((post, index) => (
-                            <li key={index}>
-                                <h4>{post.title}</h4>
-                                <p>{post.content}</p>
-                                <p>Публикувано от: {post.user}</p>
-                                <p>Създадена на:{post.createdAt}</p>
-                                <button onClick={() => handleLike(index)}> 
-                
-                                </button>
-                                <button onClick={() => handleDislike(index)}> 
-                                
-                                </button>
-                                <p>Likes: {post.likes}</p> 
-                                <p>Dislikes: {post.dislikes}</p> 
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>Няма публикации</p>
-                )}
-            </div>
-        </div>
-    );
+<button type="submit">Създаване на тема</button>
+</form>
+<div>
+<h3>Теми</h3>
+{posts.length > 0 ? (
+  <ul>
+      {posts.map((post, index) => (
+          <li key={index}>
+              <h4>{post.title}</h4>
+              <p>{post.content}</p>
+              <p>Публикувано от: {post.user}</p>
+              <p>Създадена на:{post.createdAt}</p>
+              <button onClick={() => handleLike(index)}> 
+ 
+              </button>
+              <button onClick={() => handleDislike(index)}> 
+              
+              </button>
+              <p>Likes: {post.likes}</p> 
+              <p>Dislikes: {post.dislikes}</p> 
+          </li>
+      ))}
+  </ul>
+) : (
+  <p>Няма публикации</p>
+)}
+</div>
+</div>
+);
 };
 
 export default CreatePost; */

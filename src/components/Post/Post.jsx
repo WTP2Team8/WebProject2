@@ -7,6 +7,7 @@ import { AppContext } from "../../context/AppContext";
 import { dislikePost, likePost } from "../../services/posts.service";
 import { db } from "../../config/firebase-config";
 import { get, ref } from "firebase/database";
+import { deletePost } from "../../services/posts.service";
 
 /**
  *
@@ -48,7 +49,7 @@ export default function Post({ post }) {
           liked ? (
             <Button onClick={toggleDislike}>Не харесвам</Button>
           ) : (
-            <Button className="me-auto" onClick={toggleLike}>Харесвам</Button>
+            <Button className="ml-5" onClick={toggleLike}>Харесвам</Button>
           )
         ) : null}
       </h4>
@@ -63,10 +64,15 @@ export default function Post({ post }) {
       {/* Display the like count */}
       <Button
         onClick={() => navigate(`/posts/${post.id}`)}
-        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded float-right"
       >
         Прегледай и Коментирай
       </Button>
+      {post?.author === userData?.handle && (
+        <Button onClick={() => deletePost(post.id)}>
+          Изтрии публикацията
+        </Button>
+      )}
     </div>
   );
 }

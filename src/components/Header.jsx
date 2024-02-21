@@ -14,23 +14,52 @@ export default function Header() {
   };
 
   return (
-    <header className="header">
+    <header className="header bg-orange-800 text-white py-4 px-6">
       {/* <img
         className="ladle"
         src="/images/cherpache.png"
         alt="Cherpache Logo"
       /> */}
-      {user && <NavLink to="/posts">Всички постове</NavLink>}
-      {user && <NavLink to="/posts-create">Създай пост</NavLink>}
+      {user && (
+        <NavLink
+          to="/posts"
+          className="mr-4 text-yellow-500"
+        >
+          Всички публикации
+        </NavLink>
+      )}
+      {user && (
+        <NavLink
+          to="/posts-create"
+          className="mr-4 text-yellow-500"
+        >
+          Създай публикация
+        </NavLink>
+      )}
       {user ? (
         <>
-          <span className="greeting">{`Здравей, ${userData?.handle}`}</span>
-          <Button onClick={logout}>Изход</Button>
+          <span className="greeting mr-4 text-yellow-500">{`Здравей, ${userData?.handle}`}</span>
+          <Button
+            onClick={logout}
+            className="bg-red-500 hover:bg-red-700 text-white"
+          >
+            Изход
+          </Button>
         </>
       ) : (
         <>
-          <NavLink to="/register">Регистрация</NavLink>
-          <NavLink to="/login">Вход</NavLink>
+          <NavLink
+            to="/register"
+            className="mr-4 text-blue-500 hover:text-blue-700"
+          >
+            Регистрация
+          </NavLink>
+          <NavLink
+            to="/login"
+            className="mr-4 text-blue-500 hover:text-blue-700"
+          >
+            Вход
+          </NavLink>
         </>
       )}
     </header>
