@@ -33,8 +33,7 @@ const Sorted = () => {
     
     <div className="flex flex-col items-center"> {/* Added 'items-center' class */}
     <div>
-              <img className="w-80 h-80" src="https://cdn.pazaruvai-lesno.bg/media/catalog/product/cache/d791de03504d1e397ac2dbb1583dacc3/1/9/19525.jpg" alt="черпачето" />
-            </div>
+              </div>
       {userData?.handle ? (
         <select
           value={sortOrder}

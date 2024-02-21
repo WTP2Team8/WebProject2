@@ -122,11 +122,6 @@ export default function SinglePost() {
           ) : (
             <Button onClick={() => setAddComment(true)}>Коментирай публикацията</Button>
           )}
-          {liked ? (
-            <Button onClick={toggleDislike}>Нехаресвам</Button>
-          ) : (
-            <Button onClick={toggleLike}>Харесвам</Button>
-          )}
         </div>
       </div>
       {comments && (
