@@ -18,9 +18,9 @@ export default function SearchBar() {
         value={term}
         onChange={(e) => setTerm(e.target.value)}
         placeholder="Намери пост..."
-        style={{ marginRight: "20px", marginTop: "20px" }}
+        style={{width: 170, height: 25, marginRight: "20px", marginTop: "20px" }}
       />
-      <button type="submit">Намери</button>
+      <button style={{ backgroundColor: "orange", color: "black", width: "70px", height: "25px" }} type="submit">Намери</button>
     </form>
   );
 }
