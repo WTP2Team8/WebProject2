@@ -88,12 +88,11 @@ export default function CreatePost() {
         <option value="" disabled selected>
           Изберете категория
         </option>
-        <option value="meat-category">Месни основни</option>
-        <option value="vegeterian-category">Вегетариански основни</option>
+        <option value="meat-category">Месни ястия</option>
+        <option value="vegeterian-category">Вегетариански ястия</option>
         <option value="salads-category">Салати</option>
         <option value="soups-category">Супи</option>
         <option value="deserts-category">Десерти</option>
-        <option value="others-category">Други</option>
       </select>
 
       <label htmlFor="input-content" className="block mb-2">

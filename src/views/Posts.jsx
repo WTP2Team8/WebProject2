@@ -89,9 +89,9 @@ const CreatePost = () => {
                                 <p>Публикувано от: {post.user}</p>
                                 <p>Създадена на:{post.createdAt}</p>
                                 <button onClick={() => handleLike(index)} className="bg-green-500 text-white px-2 py-1 rounded mr-2">Like</button>
-                                <button onClick={() => handleDislike(index)} className="bg-red-500 text-white px-2 py-1 rounded">Dislike</button>
-                                <p>Likes: {post.likes}</p>
-                                <p>Dislikes: {post.dislikes}</p>
+                                <button onClick={() => handleDislike(index)} className="bg-red-500 text-white px-2 py-1 rounded">Не харесвам</button>
+                                <p>Харесвания: {post.likes}</p>
+                                <p>Не харесвам: {post.dislikes}</p>
                             </li>
                         ))}
                     </ul>

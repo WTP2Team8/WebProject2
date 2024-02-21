@@ -24,7 +24,7 @@ import VegeterianCategory from "./views/Categories/VegeterianCategory";
 import SoupsCategory from "./views/Categories/SoupsCategory";
 import SaladsCategory from "./views/Categories/SaladsCategory";
 import DesertsCategory from "./views/Categories/DesertsCategory";
-import OthersCategory from "./views/Categories/OthersCategory";
+// import OthersCategory from "./views/Categories/OthersCategory";
 import SearchResults from "./views/SearchedItems";
 import MyPosts from "./views/MyPosts";
 import Home from "./views/Home";
@@ -37,7 +37,7 @@ function App() {
     userData: null,
   });
 
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   if (context.user !== user) {
     setContext({ user });
@@ -63,7 +63,6 @@ function App() {
   }, [user]);
 
   return (
-    // <div im>
     <BrowserRouter>
       <AppContext.Provider value={{ ...context, setContext }}>
         <Navbar />
@@ -100,7 +99,6 @@ function App() {
           <Route path="/salads-category" element={<SaladsCategory />} />
           <Route path="/soups-category" element={<SoupsCategory />} />
           <Route path="/deserts-category" element={<DesertsCategory />} />
-          <Route path="/others-category" element={<OthersCategory />} />
           <Route path="/search/:term" element={<SearchResults />} />
           <Route path="/my-posts" element={<MyPosts />} />
           <Route path="/my-comments" element={<MyComments />} />

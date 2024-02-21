@@ -1,4 +1,3 @@
-import SearchBar from "../components/SearchBar";
 import Sorted from "./Sorted";
 
 export default function AllPosts() {

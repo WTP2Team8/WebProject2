@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAllPosts } from "../../services/posts.service";
 import Post from "../../components/Post/Post";
 
@@ -17,7 +17,6 @@ const SoupsCategory = () => {
 
     return (
         <div>
-            <h1>Супи</h1>
             <div>
                 {soupPosts.map((post) => (
                     <Post key={post.id} post={post} />

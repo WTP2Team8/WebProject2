@@ -4,7 +4,7 @@ import { getAllPosts } from "../services/posts.service";
 import Post from "../components/Post/Post";
 
 const Favorites = () => {
-  const { user, userData } = useContext(AppContext);
+  const { userData } = useContext(AppContext);
   const [favorites, setFavorites] = useState(null);
   console.log(userData?.likedPosts);
 

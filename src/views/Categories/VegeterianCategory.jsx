@@ -17,7 +17,6 @@ export default function VegeterianCategory() {
 
     return (
         <div >
-            <h1 className="font-bold mb-11">Вегетариански</h1>
             <div>
                 {vegeterianPosts.map((post) => (
                     <Post key={post.id} post={post} />

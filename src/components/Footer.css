@@ -10,4 +10,5 @@ footer {
     width: 100%;
     position: fixed; /* Changed from absolute to fixed */
     bottom: 0;
+    background-image: url(/images/cloth.jpg);
 }
