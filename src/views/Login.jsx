@@ -33,8 +33,9 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="">
+      <h1>Влез</h1>
+      <br />
       <label htmlFor="email">Имейл: </label>
       <input
         value={form.email}
