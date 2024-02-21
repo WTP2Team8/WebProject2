@@ -42,7 +42,7 @@ export default function Post({ post }) {
   };
 
   return (
-    <div className="bg-red-700 p-4 rounded-lg shadow-md mb-5 ml-5 mr-5">
+    <div className="bg-amber-500 p-4 rounded-lg shadow-md mb-5 ml-5 mr-5">
       <h4 className="text-xl font-bold mb-5">
         {post.title}{" "}
         {userData ? (
@@ -68,7 +68,7 @@ export default function Post({ post }) {
       >
         Прегледай и Коментирай
       </Button>
-      {post.author === userData.handle && (
+      {post?.author === userData?.handle && (
         <Button onClick={() => deletePost(post.id)}>
           Изтрии публикацията
         </Button>

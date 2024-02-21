@@ -84,7 +84,7 @@ export default function SinglePost() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Публикация</h1>
-      <div className="bg-white rounded-lg shadow-lg p-4">
+      <div className="bg-amber-500 rounded-lg shadow-lg p-4">
         <div className="flex justify-between items-center mb-4">
           <span>{post?.createdOn}</span>
           <span>{likeCount} харесвания</span>
