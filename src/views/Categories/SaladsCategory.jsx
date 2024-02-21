@@ -19,7 +19,7 @@ export default function SaladsCategory() {
 
   return (
     <div>
-      <h1 className="font-sans font-bold text-2xl my-5 py-2 text-black rounded-lg">
+      <h1 className="text-2xl font-bold mb-4 flex justify-center items-center">
         Салати
       </h1>
 

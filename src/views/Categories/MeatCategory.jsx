@@ -17,6 +17,9 @@ export default function MeatCategory() {
 
   return (
     <div>
+      <h1 className="text-2xl font-bold mb-4 flex justify-center items-center">
+        Месни ястия
+      </h1>
       <div>
         {meatPosts.map((post) => (
           <Post key={post.id} post={post} />

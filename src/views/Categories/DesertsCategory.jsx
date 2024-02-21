@@ -19,6 +19,9 @@ export default function DesertsCategory() {
 
   return (
     <div>
+      <h1 className="text-2xl font-bold mb-4 flex justify-center items-center">
+        Десерти
+      </h1>
       <div>
         {desertsPosts.map((post) => (
           <Post key={post.id} post={post} />

@@ -63,15 +63,16 @@ export default function CreatePost() {
   return (
     <section className="createPostField">
       <h1 className="text-2xl font-bold mb-4">Нова Публикация във Форума</h1>
-      <label htmlFor="input-title" className="block mb-2">
-        Заглавие
-        <span className="require">*</span>
-      </label>
+
       {error && (
         <div id="error" className="text-red-500 mb-2">
           {error}
         </div>
       )}
+      <label htmlFor="input-title" className="block mb-2">
+        Заглавие
+        <span className="require">*</span>
+      </label>
 
       <input
         className="w-full border border-red-320 rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-red-500 mb-4"
@@ -121,4 +122,3 @@ export default function CreatePost() {
     </section>
   );
 }
-  
