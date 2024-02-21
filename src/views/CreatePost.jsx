@@ -44,6 +44,10 @@ export default function CreatePost() {
 
     await addPost(userData.handle, post.title, post.content, post.category);
 
+    setError(
+      <span style={{ color: "green" }}>Ураа, дано си създал нещо вкусно!</span>
+    );
+
     setPost({
       title: "",
       content: "",
@@ -63,7 +67,11 @@ export default function CreatePost() {
         Заглавие
         <span className="require">*</span>
       </label>
-      {error && <div id="error" className="text-red-500 mb-2">{error}</div>}
+      {error && (
+        <div id="error" className="text-red-500 mb-2">
+          {error}
+        </div>
+      )}
 
       <input
         className="w-full border border-red-320 rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-red-500 mb-4"
@@ -113,3 +121,4 @@ export default function CreatePost() {
     </section>
   );
 }
+  
