@@ -79,7 +79,7 @@ export default function SinglePost() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Публикация</h1>
-      <div className="bg-white rounded-lg shadow-lg p-4">
+      <div className="bg-orange rounded-lg shadow-lg p-4">
         <div className="flex justify-between items-center mb-4">
           <span>{post?.createdOn}</span>
           <span>{likeCount} харесвания</span>
@@ -133,7 +133,7 @@ export default function SinglePost() {
         <div className="mt-4">
           <h3 className="text-xl font-bold">Коментари</h3>
           {Object.keys(comments).map((key) => (
-            <div key={key} className="bg-white rounded-lg shadow-lg p-4 mt-4">
+            <div key={key} className="bg-green-700 rounded-lg shadow-lg p-4 mt-4">
               <span>{comments[key].firstName}</span>
               <span className="mx-2">|</span>
               <span>{comments[key].lastName}</span>

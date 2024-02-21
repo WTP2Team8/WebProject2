@@ -1,4 +1,6 @@
+import Footer from "../components/Footer";
 import Sorted from "./Sorted";
+
 
 export default function AllPosts() {
   return (

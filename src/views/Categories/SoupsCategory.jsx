@@ -16,7 +16,7 @@ const SoupsCategory = () => {
     }, []);
 
     return (
-        <div className="bg-gray-100 py-8">
+        <div className="bg-gray-100 py-8 bg-yellow-700">
             <div className="container mx-auto">
                 <div>
                     {soupPosts.map((post) => (
