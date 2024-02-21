@@ -16,12 +16,16 @@ export default function VegeterianCategory() {
     }, []);
 
     return (
-        <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {vegeterianPosts.map((post) => (
-                    <Post key={post.id} post={post} />
-                ))}
-            </div>
+        <div>
+          <h1 className="font-sans font-bold text-2xl my-5 py-2 text-black rounded-lg">
+            Вегетариански основни
+          </h1>
+    
+          <div className="grid grid-cols-1 gap-4">
+            {vegeterianPosts.map((post) => (
+              <Post key={post.id} post={post} />
+            ))}
+          </div>
         </div>
-    );
+      );
 }

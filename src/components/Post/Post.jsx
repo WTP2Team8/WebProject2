@@ -68,7 +68,7 @@ export default function Post({ post }) {
       >
         Прегледай и Коментирай
       </Button>
-      {post.author === userData.handle && (
+      {post?.author === userData?.handle && (
         <Button onClick={() => deletePost(post.id)}>
           Изтрии публикацията
         </Button>
