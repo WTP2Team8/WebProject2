@@ -122,7 +122,7 @@ export const addCommentPost = async (
       firstName: firstName,
       lastName: lastName,
       content: comment,
-      createdOn: new Date().toString(),
+      createdOn: new Date(),
     });
   } catch (error) {
     console.error(error);

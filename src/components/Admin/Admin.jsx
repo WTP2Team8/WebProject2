@@ -8,6 +8,7 @@ import {
 } from "../../services/users.service";
 import { deletePost, getAllPosts } from "../../services/posts.service";
 import UserView from "../UserView/UserView";
+import "./Admin.css";
 
 const Admin = () => {
   const [page, setPage] = useState(1);
@@ -47,20 +48,22 @@ const Admin = () => {
         <Button onClick={() => setPage(2)}>Блокирани потребители</Button>
         <Button onClick={() => setPage(3)}>Публикации</Button>
       </div>
+      <br />
+      <br />
       <div className="admin-main">
         {page === 1 && (
           <div className="admin-page">
-            <h1 className="text-2xl font-bold mb-4">Потребители:</h1>
             <table className="w-full">
-              <thead>
+              <thead className="admin">
                 <tr>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>Admin</th>
-                  <th>Block User</th>
+                  <th className="username">Потребителско име</th>
+                  <th className="email">Имейл</th>
+                  <th className="admin">Админ</th>
+                  <th className="blocked">Отблокирай потребител</th>
                 </tr>
+                <br />
               </thead>
-              <tbody>
+              <tbody className="id2">
                 {users?.map((user) => (
                   <UserView
                     key={user.id}
@@ -76,17 +79,17 @@ const Admin = () => {
         )}
         {page === 2 && (
           <div className="admin-page">
-            <h1 className="text-2xl font-bold mb-4">Блокирани потребители:</h1>
             <table className="w-full">
+              <br />
               <thead>
                 <tr>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>Admin</th>
-                  <th>Unblock user</th>
+                  <th>Потребителско име</th>
+                  <th>Имейл</th>
+                  <th>Админ</th>
+                  <th>Отблокирай потребител</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="id1">
                 {blockedUsers?.map((user) => (
                   <UserView
                     key={user.id}
@@ -101,22 +104,24 @@ const Admin = () => {
         )}
         {page === 3 && (
           <div className="admin-page">
-            <h1 className="text-2xl font-bold mb-4 font-serif mb-3">Публикации:</h1>
+            <h1 className="text-2xl font-bold mb-4 font-serif mb-3"></h1>
             <table className="w-full">
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Created On</th>
-                  <th>Delete Post</th>
+                  <th>Заглавие</th>
+                  <th>Автор</th>
+                  <th>Създаден на</th>
+                  <th>Премахни</th>
                 </tr>
               </thead>
+              <br />
               <tbody>
                 {posts?.map((post) => (
-                  <tr key={post.id}>
+                  <tr key={post.id} className="id">
                     <td>{post.title}</td>
                     <td>{post.author}</td>
-                    <td>No</td>
+                    <td>{post.createdOn}</td>
+
                     <td>
                       <Button onClick={() => handleDeletePost(post.id)}>
                         Изтрии
@@ -132,5 +137,5 @@ const Admin = () => {
       <div className="admin-footer"></div>
     </div>
   );
- }
+};
 export default Admin;
