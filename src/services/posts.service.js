@@ -17,7 +17,7 @@ export const addPost = async (author, title, content, category) => {
     title,
     content,
     category,
-    createdOn: Date.now().toString(),
+    createdOn: Date.now(),
     comments: {},
     likes: 0,
   });
